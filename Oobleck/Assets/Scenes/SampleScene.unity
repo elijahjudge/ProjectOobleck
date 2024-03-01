@@ -403,7 +403,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 255
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -802,55 +802,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2400719249606103300, guid: e0e766099525c8a4ca4a58660ce8012c,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5057579345824619602, guid: e0e766099525c8a4ca4a58660ce8012c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6089249728048871412, guid: e0e766099525c8a4ca4a58660ce8012c,
         type: 3}
       propertyPath: m_Name
       value: PlayerOoble
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019716769657319658, guid: e0e766099525c8a4ca4a58660ce8012c,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019716769657319658, guid: e0e766099525c8a4ca4a58660ce8012c,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019716769657319658, guid: e0e766099525c8a4ca4a58660ce8012c,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019716769657319658, guid: e0e766099525c8a4ca4a58660ce8012c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019716769657319658, guid: e0e766099525c8a4ca4a58660ce8012c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019716769657319658, guid: e0e766099525c8a4ca4a58660ce8012c,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019716769657319658, guid: e0e766099525c8a4ca4a58660ce8012c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1556,6 +1511,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: OobleckSquare (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3182807594052286557, guid: 64b481712ca922e439e8ad7bc734624c,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182807594052286557, guid: 64b481712ca922e439e8ad7bc734624c,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182807594052286557, guid: 64b481712ca922e439e8ad7bc734624c,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.5019608
+      objectReference: {fileID: 0}
     - target: {fileID: 7519907544428816367, guid: 64b481712ca922e439e8ad7bc734624c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1690,6 +1660,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3182807594052286557, guid: 64b481712ca922e439e8ad7bc734624c,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182807594052286557, guid: 64b481712ca922e439e8ad7bc734624c,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182807594052286557, guid: 64b481712ca922e439e8ad7bc734624c,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.7735849
+      objectReference: {fileID: 0}
     - target: {fileID: 7519907544428816367, guid: 64b481712ca922e439e8ad7bc734624c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1738,6 +1723,11 @@ PrefabInstance:
     - target: {fileID: 7519907544428816367, guid: 64b481712ca922e439e8ad7bc734624c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137734266973669637, guid: 64b481712ca922e439e8ad7bc734624c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
