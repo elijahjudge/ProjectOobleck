@@ -11,6 +11,8 @@ public class Ooble_Jump : CharacterState
     public delegate void Jump(GameObject character);
 
     public static Jump playerJumped;
+
+
     public override void Awake()
     {
         base.Awake();
@@ -26,7 +28,6 @@ public class Ooble_Jump : CharacterState
 
         subHSM = new HierarchicalStateMachine(startState);
     }
-
 
 }
 
@@ -74,11 +75,11 @@ public class Ooble_Jump_Substate : CharacterSubState
     {
         float height = cState.mCState.CV.jumpHeight;
 
-        if (!cState.mCState.input.GetButtonSouth())
-            height = 3;
-
         float initialVelocity = Mathf.Sqrt(2f * height * GetRiseGravity());
+        cState.mCState.rb.velocity = Vector3.Scale(cState.mCState.rb.velocity, new Vector3(1f, 0f, 1f));
         cState.mCState.rb.AddForce(Vector3.up * initialVelocity, ForceMode.VelocityChange);
+
+        Debug.Log("!!!!!!!!!!!!!!!!!!!! Jump Force: " + initialVelocity);
         cState.mCState.rb.AddForce(cState.mCState.input.CalculateDesiredMovementDirection(), ForceMode.VelocityChange);
     }
 

@@ -94,7 +94,7 @@ public class CharacterState : MonoBehaviour, InterruptableState
 
     protected List<StateConnection> stateConnections = new List<StateConnection>();
 
-
+    protected float timeEnteredCharacterState;
     public virtual void Initialize(ManagerCharacterState mCState)
     {
         this.mCState = mCState;
@@ -106,6 +106,7 @@ public class CharacterState : MonoBehaviour, InterruptableState
     }
     public virtual void OnEnter()
     {
+        timeEnteredCharacterState = Time.time;
         subHSM.currentState.OnEnter();
     }
 

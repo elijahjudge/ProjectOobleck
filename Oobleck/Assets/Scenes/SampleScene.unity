@@ -1655,26 +1655,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OobleckSquare
       objectReference: {fileID: 0}
-    - target: {fileID: 930974562216515426, guid: 64b481712ca922e439e8ad7bc734624c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182807594052286557, guid: 64b481712ca922e439e8ad7bc734624c,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.7735849
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182807594052286557, guid: 64b481712ca922e439e8ad7bc734624c,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.7735849
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182807594052286557, guid: 64b481712ca922e439e8ad7bc734624c,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.7735849
-      objectReference: {fileID: 0}
     - target: {fileID: 7519907544428816367, guid: 64b481712ca922e439e8ad7bc734624c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1725,10 +1705,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9137734266973669637, guid: 64b481712ca922e439e8ad7bc734624c,
+    - target: {fileID: 7519907544428816367, guid: 64b481712ca922e439e8ad7bc734624c,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,7 +14,8 @@ public class Ooble_Movement : CharacterState
 
         stateConnections = new List<StateConnection>() 
         { 
-            new StateConnection(mCState.jump,() => mCState.input.FrameAllowanceSouthButton(10,true))
+            new StateConnection(mCState.jump,() => mCState.input.FrameAllowanceSouthButton(4,true)
+            && Time.time - timeEnteredCharacterState > 0f)
         };
 
         idle.InitializeAsStartState(this, new List<StateConnection>() { 

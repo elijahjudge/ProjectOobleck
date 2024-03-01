@@ -43,9 +43,11 @@ public class GroundRider : MonoBehaviour
     public static GroundRelatedDelegate characterTouchedGround;
     public static GroundRelatedDelegate characterLeftGround;
 
+    public float latestGroundHeight;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        characterTouchedGround += UpdateGroundHeight;
     }
 
 
@@ -69,6 +71,11 @@ public class GroundRider : MonoBehaviour
             grounded = false;
         }
 
+    }
+
+    private void UpdateGroundHeight(GameObject gameobject)
+    {
+        latestGroundHeight = transform.position.y;
     }
     public void UpdateRideInfoBasedOnScale()
     {

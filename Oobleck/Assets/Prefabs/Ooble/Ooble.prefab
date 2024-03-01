@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9020925107322463141}
   - component: {fileID: 560749370207921096}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PhysicalCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,6 +65,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8019716769657319658}
   - component: {fileID: 2400719249606103300}
+  - component: {fileID: 4059008895853295817}
   m_Layer: 8
   m_Name: RT_Sink
   m_TagString: Untagged
@@ -139,6 +140,61 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4059008895853295817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057579345824619602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd997f1fb8a6b7e4289265a475d79e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundRider: {fileID: 7293885715612960341}
+  heightDifferenceToColor:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -2
+      value: 0.8
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -0.7
+      value: 0.7905661
+      inSlope: -0.01886785
+      outSlope: -0.01886785
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0
+      value: 0.2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.8
+      inSlope: 2.4963548
+      outSlope: -1.8915104
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.05800903
+      outWeight: 0.07231915
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6089249728048871412
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +216,7 @@ GameObject:
   - component: {fileID: 8833165464930663957}
   - component: {fileID: 5520253466155530923}
   - component: {fileID: -4446910204527134064}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ooble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,6 +449,7 @@ MonoBehaviour:
   debugOn: 1
   checkForGround: 1
   grounded: 0
+  latestGroundHeight: 0
 --- !u!114 &8203873624533383477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,10 +701,10 @@ MonoBehaviour:
       durationalSounds: []
     cState: {fileID: -4446910204527134064}
   jumpStartUp:
-    duration: 2
+    duration: 1
     useCustomMovementLogic: 0
     stateMovement:
-      enterVelocity: 2
+      enterVelocity: 0
       multiplier: 0
       initialForceImpulse: {x: 0, y: 0, z: 0}
       movementType: 0
@@ -659,7 +716,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         valueRange: {x: 0, y: 1}
-      GroundRide: 0
+      GroundRide: 1
     useCustomRotationLogic: 0
     stateRotation:
       resetAngularVelocity: 0
@@ -795,10 +852,110 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8399451175088698782, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6607009830343746747, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6246009765657452619, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4005304760021239590, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3815630979138882398, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -879930951784076934, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -495589903180073981, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 576619233727121801, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: edaa3f7327ded324497d4b4ab7e3f051,
         type: 3}
       propertyPath: m_Name
       value: Ooble
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468551188479771725, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823559233487506110, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747695645589782334, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249754490941455572, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593472558808253410, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001844025405617740, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288192942946104459, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469104987765772566, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988896938100748904, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722945817569522585, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
