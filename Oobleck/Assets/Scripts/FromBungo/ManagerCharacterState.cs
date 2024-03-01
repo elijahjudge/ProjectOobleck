@@ -12,7 +12,11 @@ public class ManagerCharacterState : MonoBehaviour
     [Header("Grounded")]
     public CharacterState groundMovement;
     public CharacterState jump;
- 
+
+    [Header("In Oobleck")]
+    public CharacterState oobleckMovement;
+    public CharacterState oobleckJump;
+
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public InputReader input;
     [HideInInspector] public Animator animator;
@@ -48,6 +52,8 @@ public class ManagerCharacterState : MonoBehaviour
     {
         groundMovement.Initialize(this);
         jump.Initialize(this);
+        oobleckMovement.Initialize(this);
+        oobleckJump.Initialize(this);
     }
 
     private void GetAllReferences()

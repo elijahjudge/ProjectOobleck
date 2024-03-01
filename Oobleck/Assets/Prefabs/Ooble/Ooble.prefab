@@ -216,6 +216,8 @@ GameObject:
   - component: {fileID: 8833165464930663957}
   - component: {fileID: 5520253466155530923}
   - component: {fileID: -4446910204527134064}
+  - component: {fileID: 2944472760197694493}
+  - component: {fileID: 6724423005524933655}
   m_Layer: 3
   m_Name: Ooble
   m_TagString: Untagged
@@ -438,6 +440,7 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 192
+  oobleckLayer: 7
   _rideHeight: 0.65
   _rideSpringStrength: 500
   _rideSpringDamper: 25
@@ -449,6 +452,8 @@ MonoBehaviour:
   debugOn: 1
   checkForGround: 1
   grounded: 0
+  touchingOobleck: 0
+  oobleckParticlePosition: {fileID: 0}
   latestGroundHeight: 0
 --- !u!114 &8203873624533383477
 MonoBehaviour:
@@ -478,6 +483,8 @@ MonoBehaviour:
   characterNumber: 1
   groundMovement: {fileID: 5520253466155530923}
   jump: {fileID: -4446910204527134064}
+  oobleckMovement: {fileID: 2944472760197694493}
+  oobleckJump: {fileID: 6724423005524933655}
   rb: {fileID: 0}
   input: {fileID: 0}
   animator: {fileID: 0}
@@ -533,6 +540,7 @@ MonoBehaviour:
       effectsOnStart: []
       effectsOnExit: []
       durationalEffects: []
+      oobleckDurationEffects: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -589,6 +597,7 @@ MonoBehaviour:
       effectsOnStart: []
       effectsOnExit: []
       durationalEffects: []
+      oobleckDurationEffects: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -645,6 +654,7 @@ MonoBehaviour:
       effectsOnStart: []
       effectsOnExit: []
       durationalEffects: []
+      oobleckDurationEffects: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -696,6 +706,7 @@ MonoBehaviour:
       effectsOnStart: []
       effectsOnExit: []
       durationalEffects: []
+      oobleckDurationEffects: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -734,6 +745,7 @@ MonoBehaviour:
       effectsOnStart: []
       effectsOnExit: []
       durationalEffects: []
+      oobleckDurationEffects: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -790,10 +802,327 @@ MonoBehaviour:
       effectsOnStart: []
       effectsOnExit: []
       durationalEffects: []
+      oobleckDurationEffects: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: -4446910204527134064}
+--- !u!114 &2944472760197694493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089249728048871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce61012b9b3c144d9d25c7f647b7511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCState: {fileID: 0}
+  startState:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  idle:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 4
+      multiplier: 0.5
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 2
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 0}
+      GroundRide: 1
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 3
+      rotationForce: 5
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 1
+    stateGravity: 60
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects:
+      - {fileID: 11400000, guid: 32e83021fcee8ff4b9ec74521a13b752, type: 2}
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  run:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 2
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 5}
+      GroundRide: 1
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 1
+      rotationForce: 5
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 1
+    stateGravity: 60
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects:
+      - {fileID: 11400000, guid: 45a6d61fa32c80645b6b5638a069243b, type: 2}
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+--- !u!114 &6724423005524933655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089249728048871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a594c1cbfb8e6439d15b3a4f59877b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCState: {fileID: 0}
+  startState:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  jumpStartUp:
+    duration: 3
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 1
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  jump:
+    duration: 15
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 2
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 15, z: 0}
+      movementType: 4
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 5}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 1
+    stateGravity: 60
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
 --- !u!1001 &8936278156448485696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1061,7 +1390,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    valueRange: {x: -25, y: 18}
+    valueRange: {x: -20, y: 18}
     timeRange: {x: -1, y: 1}
   _angleFromDotProductYAxis:
     curve:

@@ -39,7 +39,7 @@ public class CharacterAnimator : MonoBehaviour
         //animator.SetFloat("StateWait", animator.GetFloat("StateWait") + Time.deltaTime);
         animator.SetFloat("TimeSinceJump", animator.GetFloat("TimeSinceJump") + Time.deltaTime);
     }
-    public void SetGrounded(GameObject gameObject)
+    public void SetGrounded(bool oobleck)
     {
         if (this.gameObject != gameObject)
             return;
@@ -52,7 +52,7 @@ public class CharacterAnimator : MonoBehaviour
         //ManagerAudio.instance.Play(landingSound);
     }
 
-    public void LeftGrounded(GameObject gameObject)
+    public void LeftGrounded(bool oobleck)
     {
         if (this.gameObject != gameObject)
             return;

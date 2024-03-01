@@ -32,11 +32,8 @@ public class CharacterTarget : MonoBehaviour
             Time.deltaTime * smoothing);
     }
 
-    public void AdjustPlayerHeight(GameObject target)
+    public void AdjustPlayerHeight(bool oobleck)
     {
-        if (this.target != target)
-            return;
-
         height = target.transform.position.y;
     }
 }

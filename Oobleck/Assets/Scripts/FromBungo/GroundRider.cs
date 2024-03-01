@@ -10,6 +10,7 @@ public class GroundRider : MonoBehaviour
     [Header("Raycast Setup")]
     public float rayLength;
     public LayerMask _groundMask;
+    public int oobleckLayer;
 
     [Header("Ride Setup")]
     public float _rideHeight;
@@ -38,11 +39,13 @@ public class GroundRider : MonoBehaviour
     [SerializeField] private bool debugOn;
     public bool checkForGround = true;
     public bool grounded;
+    public bool touchingOobleck;
 
-    public delegate void GroundRelatedDelegate(GameObject character);
+    public delegate void GroundRelatedDelegate(bool Oobleck);
     public static GroundRelatedDelegate characterTouchedGround;
     public static GroundRelatedDelegate characterLeftGround;
 
+    public Transform oobleckParticlePosition;
     public float latestGroundHeight;
     void Awake()
     {
@@ -58,24 +61,35 @@ public class GroundRider : MonoBehaviour
 
         if(CheckIfGrounded())
         {
-            if(!grounded)
-                characterTouchedGround?.Invoke(gameObject);
+            if (!grounded)
+            {
+                characterTouchedGround?.Invoke(touchingOobleck);
+
+                if(touchingOobleck)
+                {
+
+                }
+            }
 
             grounded = true;
         }
         else
         {
             if(grounded)
-                characterLeftGround?.Invoke(gameObject);
+                characterLeftGround?.Invoke(touchingOobleck);
 
             grounded = false;
         }
 
     }
 
-    private void UpdateGroundHeight(GameObject gameobject)
+    private void UpdateGroundHeight(bool oobleck)
     {
         latestGroundHeight = transform.position.y;
+    }
+    public float GetHeightDifferenceFromLatestGround()
+    {
+        return (latestGroundHeight - transform.position.y) - 1.35f;
     }
     public void UpdateRideInfoBasedOnScale()
     {
@@ -189,8 +203,19 @@ public class GroundRider : MonoBehaviour
             {
                 rayColorDebug = Color.green;
                 grounded = true;
-            }
 
+                if (hit.transform.gameObject.layer == oobleckLayer)
+                {
+                    touchingOobleck = true;
+
+                    oobleckParticlePosition = hit.transform.gameObject.GetComponentInParent<Oobleck>().GetParticleTransform();
+                }
+                else
+                {
+                    touchingOobleck = false;
+                }
+            }
+            
         }
         else
         {

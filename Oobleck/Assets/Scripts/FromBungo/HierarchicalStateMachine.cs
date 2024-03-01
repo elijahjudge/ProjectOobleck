@@ -240,7 +240,7 @@ public class CharacterSubState : InterruptableState
             GameObject pe;
 
             if (dEffect.transformOverride == null)
-                pe =ManagerParticleEffects.instance.Play(dEffect.particleEffect, cState.mCState.transform, out particleSystems);
+                pe = ManagerParticleEffects.instance.Play(dEffect.particleEffect, cState.mCState.transform, out particleSystems);
             else
                 pe = ManagerParticleEffects.instance.Play(dEffect.particleEffect, dEffect.transformOverride, out particleSystems);
 
@@ -248,6 +248,25 @@ public class CharacterSubState : InterruptableState
             durationParticleEffects.Add(pe);
             durationParticleEffectSystems.Add(pe.GetComponentInChildren<ParticleSystem>());
 
+        }
+
+        foreach (ParticleEffect oob in effects.oobleckDurationEffects)
+        {
+            if (cState.mCState.groundRider.oobleckParticlePosition == null)
+            {
+                Debug.LogWarning("OOBLECK PARTICLE POSITION WAS NULL LOWKEY");
+                return;
+            }
+
+            List<ParticleSystem> particleSystems = new List<ParticleSystem>();
+            GameObject pe;
+
+
+            pe = ManagerParticleEffects.instance.Play(oob, cState.mCState.groundRider.oobleckParticlePosition, out particleSystems);
+
+            allPS.Add(particleSystems);
+            durationParticleEffects.Add(pe);
+            durationParticleEffectSystems.Add(pe.GetComponentInChildren<ParticleSystem>());
         }
 
         foreach (Sound sEffect in effects.durationalSounds)
@@ -296,7 +315,10 @@ public class CharacterSubState : InterruptableState
         foreach (GameObject effect in durationParticleEffects)
         {
             if (effect != null)
-                GameObject.Destroy(effect);
+            {
+                effect.transform.parent = null;
+                GameObject.Destroy(effect, 2f);
+            }
         }
 
         foreach (AudioSource effect in durationSounds)
@@ -619,6 +641,7 @@ public class StateEffects
     public List<ParticleEffectWithTransform> effectsOnStart = new List<ParticleEffectWithTransform>();
     public List<ParticleEffectWithTransform> effectsOnExit = new List<ParticleEffectWithTransform>();
     public List<ParticleEffectWithTransform> durationalEffects = new List<ParticleEffectWithTransform>();
+    public List<ParticleEffect> oobleckDurationEffects = new List<ParticleEffect>();
 
     [Header("Sounds")]
     public List<Sound> soundsOnStart = new List<Sound>();

@@ -18,8 +18,9 @@ public class Ooble_Jump : CharacterState
         base.Awake();
 
         stateConnections = new List<StateConnection>()
-        { 
-            new StateConnection(mCState.groundMovement,() => jump.StateDurationOver(subHSM) && mCState.groundRider.grounded)
+        {
+            new StateConnection(mCState.groundMovement,() => jump.StateDurationOver(subHSM) && mCState.groundRider.grounded && !mCState.groundRider.touchingOobleck),
+            new StateConnection(mCState.oobleckMovement,() => jump.StateDurationOver(subHSM) && mCState.groundRider.grounded && mCState.groundRider.touchingOobleck)
         };
 
         jumpStartUp.InitializeAsStartState(this, new List<StateConnection>() { new StateConnection(jump, () => jumpStartUp.StateDurationOver(subHSM)) }, out startState);
@@ -79,7 +80,6 @@ public class Ooble_Jump_Substate : CharacterSubState
         cState.mCState.rb.velocity = Vector3.Scale(cState.mCState.rb.velocity, new Vector3(1f, 0f, 1f));
         cState.mCState.rb.AddForce(Vector3.up * initialVelocity, ForceMode.VelocityChange);
 
-        Debug.Log("!!!!!!!!!!!!!!!!!!!! Jump Force: " + initialVelocity);
         cState.mCState.rb.AddForce(cState.mCState.input.CalculateDesiredMovementDirection(), ForceMode.VelocityChange);
     }
 
