@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.WSA;
 
 public class ManagerAudio : MonoBehaviour
 {
@@ -40,18 +39,18 @@ public class ManagerAudio : MonoBehaviour
         }
 
         GameObject soundPlayer = new GameObject(sound.name);
+        soundPlayer.transform.parent = soundEffectHolder.transform;
 
-        if (EditorApplication.isPlaying)
+        /*if (EditorApplication.isPlaying)
         {
-            soundPlayer.transform.parent = soundEffectHolder.transform;
         }
         else
         {
+        }
 #if UNITY_EDITOR
             soundPlayer.transform.parent = GameObject.Find("Audio Trash - Delete after testing").transform;
 #endif
-        }
-
+        */
 
         AudioSource source = soundPlayer.AddComponent<AudioSource>();
         int index = GetIndexOfCLipToPlay(sound,sound.soundVariables);
@@ -64,8 +63,9 @@ public class ManagerAudio : MonoBehaviour
 
         if (!sound.soundVariables.looping)
         {
-            if (EditorApplication.isPlaying)
-                Destroy(soundPlayer, source.clip.length);
+            //if (EditorApplication.isPlaying)
+
+            Destroy(soundPlayer, source.clip.length);
         }
 
         return source;
@@ -93,8 +93,9 @@ public class ManagerAudio : MonoBehaviour
 
         if (!sound.soundVariables.looping)
         {
-            if (EditorApplication.isPlaying)
-                Destroy(soundPlayer, source.clip.length);
+            //if (EditorApplication.isPlaying)
+
+            Destroy(soundPlayer, source.clip.length);
         }
 
         return source;
