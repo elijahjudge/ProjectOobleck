@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 4915596209566611875}
   - component: {fileID: 380744935109305557}
   - component: {fileID: 7966106399124776790}
+  - component: {fileID: 5018337237678523021}
   - component: {fileID: 7293885715612960341}
   - component: {fileID: 8203873624533383477}
   - component: {fileID: 8833165464930663957}
@@ -395,7 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 
-  showStateAsText: 1
+  showStateAsText: 0
   tmp: {fileID: 6444550380577946105, guid: c82d1fe0879c7114c9d87572517e136e, type: 3}
   transformOffset: {x: 0, y: 3, z: 0}
 --- !u!114 &380744935109305557
@@ -424,6 +425,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b993f6e80cdf5f4fab63eb2bca80b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5018337237678523021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089249728048871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc11e2e6ea25d74b90326b5b91337ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundRider: {fileID: 7293885715612960341}
+  Stamina: 100
 --- !u!114 &7293885715612960341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,12 +451,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736b571a428b8cc4b99003d7120db40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayLength: 1.75
+  rayLength: 1.25
   _groundMask:
     serializedVersion: 2
     m_Bits: 192
   oobleckLayer: 7
-  _rideHeight: 0.65
+  _rideHeight: 1.15
   _rideSpringStrength: 500
   _rideSpringDamper: 25
   _collider: {fileID: 560749370207921096}
@@ -1043,7 +1058,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         valueRange: {x: 0, y: 1}
-      GroundRide: 1
+      GroundRide: 0
     useCustomRotationLogic: 0
     stateRotation:
       resetAngularVelocity: 0
@@ -1067,12 +1082,12 @@ MonoBehaviour:
       durationalSounds: []
     cState: {fileID: 0}
   jump:
-    duration: 15
+    duration: 20
     useCustomMovementLogic: 0
     stateMovement:
-      enterVelocity: 2
+      enterVelocity: 3
       multiplier: 0
-      initialForceImpulse: {x: 0, y: 15, z: 0}
+      initialForceImpulse: {x: 0, y: 0, z: 0}
       movementType: 4
       movement:
         curve:
@@ -1103,12 +1118,12 @@ MonoBehaviour:
       GroundRide: 0
     useCustomRotationLogic: 0
     stateRotation:
-      resetAngularVelocity: 0
+      resetAngularVelocity: 1
       rotateTowardsInput:
-        rotateTowardsDirection: 0
+        rotateTowardsDirection: 1
         allowedRotation: 1
-      rotationType: 0
-      rotationForce: 0
+      rotationType: 1
+      rotationForce: 5
       springStrength: 0
       springDamper: 0
     simulateGravity: 1
@@ -1123,6 +1138,34 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
+  jumpRateOutOf: 2.5
+  jumpRateToHeight:
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -1
+        outSlope: -1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -1
+        outSlope: -1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    valueRange: {x: 8, y: 15}
+    timeRange: {x: 1, y: 3}
 --- !u!1001 &8936278156448485696
 PrefabInstance:
   m_ObjectHideFlags: 0

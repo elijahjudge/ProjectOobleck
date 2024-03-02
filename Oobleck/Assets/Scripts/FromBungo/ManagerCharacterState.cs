@@ -15,7 +15,7 @@ public class ManagerCharacterState : MonoBehaviour
 
     [Header("In Oobleck")]
     public CharacterState oobleckMovement;
-    public CharacterState oobleckJump;
+    public Oobleck_Jump oobleckJump;
 
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public InputReader input;

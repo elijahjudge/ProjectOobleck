@@ -436,9 +436,9 @@ public class CharacterSubState : InterruptableState
         }
 
 
-        Vector3 startingImpulse = cState.transform.localRotation * stateMovement.initialForceImpulse;
-        cState.mCState.rb.AddForce(startingImpulse, ForceMode.Impulse);
-
+        Vector3 localRotatedImpulse = cState.transform.localRotation * stateMovement.initialForceImpulse;
+        Vector3 newImpulse = new Vector3(localRotatedImpulse.x, stateMovement.initialForceImpulse.y, localRotatedImpulse.z);
+        cState.mCState.rb.AddForce(newImpulse, ForceMode.Impulse);
     }
     public void StateMovementTick()
     {

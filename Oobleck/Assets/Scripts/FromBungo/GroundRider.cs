@@ -107,7 +107,7 @@ public class GroundRider : MonoBehaviour
     {
         RaycastHit rayHit;
   
-        float sphereRadius = 1f;
+        float sphereRadius = .5f;
         sphereScaleDebug = sphereRadius;
         //bool rayDidHit = Physics.Raycast(transform.position + _rayOffset, Vector3.down, out rayHit, _rayLength, _groundMask);
         //vector up * .5f compensates for the radius of the sphere
