@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Oobleck
+  m_Name: OobleckShadow
   m_Shader: {fileID: -6465566751694194690, guid: 7a36407eae2701046a98f0cda8124d33,
     type: 3}
   m_Parent: {fileID: 0}
@@ -135,7 +135,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0, g: 1, b: 0.952054, a: 0}
+    - _MainColor: {r: 0, g: 0.5746956, b: 1, a: 0}
     - _Remap2: {r: 0, g: 0.5, b: 0, a: 0}
     - _RemapScrollingNoise: {r: -0.11, g: 0.48, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

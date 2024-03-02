@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 
-  showStateAsText: 0
+  showStateAsText: 1
   tmp: {fileID: 6444550380577946105, guid: c82d1fe0879c7114c9d87572517e136e, type: 3}
   transformOffset: {x: 0, y: 3, z: 0}
 --- !u!114 &380744935109305557

@@ -208,7 +208,16 @@ public class GroundRider : MonoBehaviour
                 {
                     touchingOobleck = true;
 
-                    oobleckParticlePosition = hit.transform.gameObject.GetComponentInParent<Oobleck>().GetParticleTransform();
+                    Oobleck oob = hit.transform.gameObject.GetComponentInParent<Oobleck>();
+
+                    if (oob != null)
+                    {
+                        oobleckParticlePosition = oob.GetParticleTransform();
+                    }
+                    else
+                    {
+                        oobleckParticlePosition = transform;
+                    }
                 }
                 else
                 {
