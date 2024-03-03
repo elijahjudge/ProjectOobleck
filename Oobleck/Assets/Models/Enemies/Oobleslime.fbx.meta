@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: de886d1ea42a0314a82a4d9b0dcb07ce
+guid: 74c0e61521082f943ab3464e29e475c2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -13,18 +13,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ooblegator
-    second: {fileID: 2100000, guid: c35f50a9070b02448afb6a87cc615f1c, type: 2}
+    second: {fileID: 2100000, guid: 433a81dc3d95cde4f8e277822b9b7cd1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: OoblegatoreEyebrow
     second: {fileID: 2100000, guid: a23631f742e846541b4d163c5a9ac0da, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Teeth
-    second: {fileID: 2504516506940294678, guid: 74c0e61521082f943ab3464e29e475c2,
-      type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
