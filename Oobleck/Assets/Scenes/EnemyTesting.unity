@@ -1751,7 +1751,7 @@ MonoBehaviour:
       timeRange: {x: 0, y: 1}
     alwaysLookAtPlayer: 1
     angularSpeed: 1
-    enterAnimation: Idle
+    enterAnimation: Chase
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -1813,7 +1813,7 @@ MonoBehaviour:
       timeRange: {x: 0, y: 1}
     alwaysLookAtPlayer: 1
     angularSpeed: 120
-    enterAnimation: Chase
+    enterAnimation: Idle
     effects:
       effectsOnStart: []
       effectsOnExit: []
