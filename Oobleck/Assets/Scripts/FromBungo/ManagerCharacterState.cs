@@ -16,6 +16,7 @@ public class ManagerCharacterState : MonoBehaviour
     [Header("In Oobleck")]
     public CharacterState oobleckMovement;
     public Oobleck_Jump oobleckJump;
+    public DeathState deathState;
 
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public InputReader input;
@@ -24,6 +25,7 @@ public class ManagerCharacterState : MonoBehaviour
     [HideInInspector] public CharacterRotation rotater;
     [HideInInspector] public CharacterMovement movement;
     [HideInInspector] public BungoGravity gravity;
+    [HideInInspector] public CharacterStamina stamina;
 
     public CharacterVariables CV;
     private CharacterState startingState;
@@ -46,6 +48,7 @@ public class ManagerCharacterState : MonoBehaviour
         input.AssignInput(GetComponent<PlayerInput>());
         input.myPlayer.currentActionMap = input.myPlayer.actions.FindActionMap("Player");
 
+        CharacterStamina.playerDied += PlayerDied;
     }
 
     private void InitializeAllCharacterStates()
@@ -54,6 +57,7 @@ public class ManagerCharacterState : MonoBehaviour
         jump.Initialize(this);
         oobleckMovement.Initialize(this);
         oobleckJump.Initialize(this);
+        deathState.Initialize(this);
     }
 
     private void GetAllReferences()
@@ -65,6 +69,7 @@ public class ManagerCharacterState : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         groundRider = GetComponent<GroundRider>();
         gravity = GetComponent<BungoGravity>();
+        stamina = GetComponent<CharacterStamina>();
     }
     private void Start()
     {
@@ -75,4 +80,9 @@ public class ManagerCharacterState : MonoBehaviour
         HSM.currentState.OnTick();
     }
 
+
+    public void PlayerDied()
+    {
+        HSM.ChangeState(deathState);
+    }
 }

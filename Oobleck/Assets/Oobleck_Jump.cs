@@ -8,18 +8,16 @@ public class Oobleck_Jump : CharacterState
     [SerializeField] public Oobleck_Jump_StartUp jumpStartUp;
     [SerializeField] public Oobleck_Jump_SS jump;
 
+    public float staminaLoss;
+    public int framesBeforeICanJumpAgain;
+
     public delegate void Jump(GameObject character);
 
     public static Jump playerJumped;
 
-    public RateOfThing jumpRate;
-    public float jumpRateOutOf;
-    public BungoCurve jumpRateToHeight;
-
     public override void Awake()
     {
         base.Awake();
-        jumpRate = new RateOfThing(jumpRateOutOf);
 
         stateConnections = new List<StateConnection>()
         {
@@ -36,23 +34,16 @@ public class Oobleck_Jump : CharacterState
 
     public override void OnEnter()
     {
-
+        mCState.stamina.LoseStamina(staminaLoss);
         base.OnEnter();
-        jumpRate.AddThing();
     }
 
     public override void OnTick()
     {
         base.OnTick();
-        jumpRate.UpdateRateTiming();
-        Debug.Log("jump rate: " + jumpRate.GetRate());
 
     }
 
-    public void RefreshJump()
-    {
-        jumpRate.Reset();
-    }
 }
 
 [System.Serializable]
@@ -68,11 +59,19 @@ public class Oobleck_Jump_StartUp : CharacterSubState
 [System.Serializable]
 public class Oobleck_Jump_SS : CharacterSubState
 {
+
+    public BungoCurve jumpHeightFromStamina;
+    public BungoCurve speedFromStamina;
     public override void OnEnter()
     {
         base.OnEnter();
-        float jumpForce = cState.mCState.oobleckJump.jumpRateToHeight.Evaluate(cState.mCState.oobleckJump.jumpRate.GetRate());
-        Debug.Log("JF! : " + jumpForce);
+        float jumpForce = jumpHeightFromStamina.Evaluate(cState.mCState.stamina.GetStaminaNormalized());
         cState.mCState.rb.AddForce(Vector3.up * jumpForce,ForceMode.Impulse);
+    }
+
+    public override void OnTick()
+    {
+        stateMovement.movement.valueRange = new Vector2(0f, speedFromStamina.Evaluate(cState.mCState.stamina.GetStaminaNormalized()));
+        base.OnTick();
     }
 }

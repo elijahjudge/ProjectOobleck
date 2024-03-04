@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline;
 using UnityEngine;
 
 public class Ooble_Movement : CharacterState
@@ -29,6 +30,12 @@ public class Ooble_Movement : CharacterState
         });
 
         subHSM = new HierarchicalStateMachine(startState);
+    }
+
+    public override void OnTick()
+    {
+        mCState.stamina.GainStaminaBack();
+        base.OnTick();
     }
 }
 

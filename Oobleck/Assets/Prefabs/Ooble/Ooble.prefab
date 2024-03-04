@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: -4446910204527134064}
   - component: {fileID: 2944472760197694493}
   - component: {fileID: 6724423005524933655}
+  - component: {fileID: 2670266758344425009}
   m_Layer: 3
   m_Name: Ooble
   m_TagString: Untagged
@@ -507,6 +508,7 @@ MonoBehaviour:
   rotater: {fileID: 0}
   movement: {fileID: 0}
   gravity: {fileID: 0}
+  stamina: {fileID: 0}
   CV: {fileID: 11400000, guid: 91154edb275c0f8428646fe7eda9fb9a, type: 2}
 --- !u!114 &5520253466155530923
 MonoBehaviour:
@@ -560,6 +562,7 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
+  timeEnteredCharacterState: 0
   idle:
     duration: 0
     useCustomMovementLogic: 0
@@ -726,6 +729,7 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: -4446910204527134064}
+  timeEnteredCharacterState: 0
   jumpStartUp:
     duration: 1
     useCustomMovementLogic: 0
@@ -874,6 +878,7 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
+  timeEnteredCharacterState: 0
   idle:
     duration: 0
     useCustomMovementLogic: 0
@@ -921,7 +926,7 @@ MonoBehaviour:
       springDamper: 0
     simulateGravity: 1
     stateGravity: 60
-    enterAnimation: 
+    enterAnimation: Idle
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -979,7 +984,7 @@ MonoBehaviour:
       springDamper: 0
     simulateGravity: 1
     stateGravity: 60
-    enterAnimation: 
+    enterAnimation: OobleckMovement
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -990,6 +995,35 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
+    speedFromStamina:
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      valueRange: {x: 1, y: 5}
+      timeRange: {x: 0, y: 1}
+    maxSpeed: 5
+    minSpeed: 1
 --- !u!114 &6724423005524933655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,6 +1076,7 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
+  timeEnteredCharacterState: 0
   jumpStartUp:
     duration: 3
     useCustomMovementLogic: 0
@@ -1082,7 +1117,7 @@ MonoBehaviour:
       durationalSounds: []
     cState: {fileID: 0}
   jump:
-    duration: 20
+    duration: 8
     useCustomMovementLogic: 0
     stateMovement:
       enterVelocity: 3
@@ -1130,7 +1165,10 @@ MonoBehaviour:
     stateGravity: 60
     enterAnimation: 
     effects:
-      effectsOnStart: []
+      effectsOnStart:
+      - particleEffect: {fileID: 11400000, guid: 065a20b74a1a71d42a709e4da79dc7fb,
+          type: 2}
+        transformOverride: {fileID: 0}
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
@@ -1138,34 +1176,78 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
-  jumpRateOutOf: 2.5
-  jumpRateToHeight:
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: -1
-        outSlope: -1
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: -1
-        outSlope: -1
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    valueRange: {x: 8, y: 15}
-    timeRange: {x: 1, y: 3}
+    jumpHeightFromStamina:
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      valueRange: {x: 5, y: 15}
+      timeRange: {x: 0, y: 1}
+    speedFromStamina:
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      valueRange: {x: 1, y: 5}
+      timeRange: {x: 0, y: 1}
+  staminaLoss: 0
+  framesBeforeICanJumpAgain: 40
+--- !u!114 &2670266758344425009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089249728048871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a503637849b0cf4cbf1b023d36a9040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stamina: 0
+  loseStaminaRate: 10
+  loseStaminaIdleRate: 40
+  gainStaminaRate: 40
 --- !u!1001 &8936278156448485696
 PrefabInstance:
   m_ObjectHideFlags: 0

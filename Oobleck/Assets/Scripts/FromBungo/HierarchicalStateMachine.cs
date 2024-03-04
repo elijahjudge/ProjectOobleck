@@ -102,7 +102,7 @@ public class CharacterState : MonoBehaviour, InterruptableState
 
     protected List<StateConnection> stateConnections = new List<StateConnection>();
 
-    protected float timeEnteredCharacterState;
+    [HideInInspector] public float timeEnteredCharacterState;
     public virtual void Initialize(ManagerCharacterState mCState)
     {
         this.mCState = mCState;
@@ -387,7 +387,6 @@ public class CharacterSubState : InterruptableState
     }
     public virtual void OnTick()
     {
-        Debug.Log("ON TICK?");
         StateRotationTick();
         StateMovementTick();
         SimulateGravity();
@@ -502,17 +501,12 @@ public class CharacterSubState : InterruptableState
         if (useCustomRotationLogic)
             return;
 
-        Debug.Log("here? what is rot type: " + stateRotation.rotationType);
-
-
-
         switch(stateRotation.rotationType)
         {
             case (StateRotation.StateRotationType.None):
                 break;
             case (StateRotation.StateRotationType.Input):
                 cState.mCState.rotater.ApplyRotation(stateRotation.rotationForce);
-                Debug.Log("Appplying rot forces");
                 break;
             case (StateRotation.StateRotationType.InputCustomSpringVariables):
                 cState.mCState.rotater.ApplyRotation(stateRotation.rotationForce,stateRotation.springDamper,stateRotation.springStrength);
