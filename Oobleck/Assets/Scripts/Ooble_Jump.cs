@@ -42,8 +42,6 @@ public class Ooble_Jump_StartUp : CharacterSubState
         Ooble_Jump.playerJumped?.Invoke(cState.mCState.gameObject);
 
         base.OnEnter();
-
-        cState.mCState.animator.Play("Jump", 0, 0f);
     }
 
     public void SetDuration()

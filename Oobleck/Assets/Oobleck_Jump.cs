@@ -36,6 +36,7 @@ public class Oobleck_Jump : CharacterState
 
     public override void OnEnter()
     {
+
         base.OnEnter();
         jumpRate.AddThing();
     }
@@ -58,7 +59,11 @@ public class Oobleck_Jump : CharacterState
 
 public class Oobleck_Jump_StartUp : CharacterSubState
 {
-
+    public override void OnEnter()
+    {
+        Ooble_Jump.playerJumped?.Invoke(cState.mCState.gameObject);
+        base.OnEnter();
+    }
 }
 [System.Serializable]
 public class Oobleck_Jump_SS : CharacterSubState

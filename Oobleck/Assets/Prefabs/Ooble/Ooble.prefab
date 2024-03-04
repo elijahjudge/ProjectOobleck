@@ -755,7 +755,7 @@ MonoBehaviour:
       springDamper: 0
     simulateGravity: 0
     stateGravity: 0
-    enterAnimation: 
+    enterAnimation: Jump
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -806,8 +806,8 @@ MonoBehaviour:
       rotateTowardsInput:
         rotateTowardsDirection: 0
         allowedRotation: 1
-      rotationType: 0
-      rotationForce: 0
+      rotationType: 1
+      rotationForce: 5
       springStrength: 0
       springDamper: 0
     simulateGravity: 0
@@ -1071,7 +1071,7 @@ MonoBehaviour:
       springDamper: 0
     simulateGravity: 0
     stateGravity: 0
-    enterAnimation: 
+    enterAnimation: OobleckJump
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -1118,12 +1118,12 @@ MonoBehaviour:
       GroundRide: 0
     useCustomRotationLogic: 0
     stateRotation:
-      resetAngularVelocity: 1
+      resetAngularVelocity: 0
       rotateTowardsInput:
-        rotateTowardsDirection: 1
+        rotateTowardsDirection: 0
         allowedRotation: 1
       rotationType: 1
-      rotationForce: 5
+      rotationForce: 2
       springStrength: 0
       springDamper: 0
     simulateGravity: 1

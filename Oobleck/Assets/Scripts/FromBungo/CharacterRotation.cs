@@ -88,7 +88,7 @@ public class CharacterRotation : MonoBehaviour
         rotationAxis.Normalize();
         float rotationRadians = rotationDegrees * Mathf.Deg2Rad;
 
-
+        Debug.Log("TORQUE HAPPENS");
         rb.AddTorque((rotationAxis * (rotationRadians * _springStrength * rotateSpeed)) - (rb.angularVelocity * _uprightJointSpringDamper * rotateSpeed));
     }
 

@@ -64,6 +64,14 @@ public class HierarchicalStateMachine
         currentState.OnEnter();
     }
 
+    public void ChangeState(EnemyState newState, State subState)
+    {
+        currentState.OnExit();
+        newState.subHSM.ResetState(subState);
+        currentState = newState;
+        currentState.OnEnter();
+    }
+
     public void ResetState(State resetStateTo)
     {
         currentState = resetStateTo;
@@ -379,6 +387,7 @@ public class CharacterSubState : InterruptableState
     }
     public virtual void OnTick()
     {
+        Debug.Log("ON TICK?");
         StateRotationTick();
         StateMovementTick();
         SimulateGravity();
@@ -493,12 +502,17 @@ public class CharacterSubState : InterruptableState
         if (useCustomRotationLogic)
             return;
 
+        Debug.Log("here? what is rot type: " + stateRotation.rotationType);
+
+
+
         switch(stateRotation.rotationType)
         {
             case (StateRotation.StateRotationType.None):
                 break;
             case (StateRotation.StateRotationType.Input):
                 cState.mCState.rotater.ApplyRotation(stateRotation.rotationForce);
+                Debug.Log("Appplying rot forces");
                 break;
             case (StateRotation.StateRotationType.InputCustomSpringVariables):
                 cState.mCState.rotater.ApplyRotation(stateRotation.rotationForce,stateRotation.springDamper,stateRotation.springStrength);
