@@ -19,7 +19,7 @@ public class CharacterStamina : MonoBehaviour
     public ManagerCharacterState characterState;
     public delegate void HealthEvent();
     public static HealthEvent allStaminaLost;
-    public static HealthEvent playerDied;
+    public static HealthEvent playerDrowned;
 
     private bool dead;
 
@@ -69,7 +69,7 @@ public class CharacterStamina : MonoBehaviour
         gainingStamina?.Invoke(GetStaminaNormalized());
     }
 
-    public void RefreshStamina()
+    public void ResetStamina()
     {
         stamina = maxStamina;
         dead = false;
@@ -88,7 +88,7 @@ public class CharacterStamina : MonoBehaviour
         if(characterState.HSM.currentState is Oobleck_Movement)
         {
             dead = true;
-            playerDied?.Invoke();
+            playerDrowned?.Invoke();
         }
     }
 }

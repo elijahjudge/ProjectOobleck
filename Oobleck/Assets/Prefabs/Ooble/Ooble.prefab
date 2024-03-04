@@ -211,6 +211,8 @@ GameObject:
   - component: {fileID: 4915596209566611875}
   - component: {fileID: 380744935109305557}
   - component: {fileID: 7966106399124776790}
+  - component: {fileID: 1206429206102679700}
+  - component: {fileID: 2670266758344425009}
   - component: {fileID: 5018337237678523021}
   - component: {fileID: 7293885715612960341}
   - component: {fileID: 8203873624533383477}
@@ -219,7 +221,7 @@ GameObject:
   - component: {fileID: -4446910204527134064}
   - component: {fileID: 2944472760197694493}
   - component: {fileID: 6724423005524933655}
-  - component: {fileID: 2670266758344425009}
+  - component: {fileID: 8588476487900192263}
   m_Layer: 3
   m_Name: Ooble
   m_TagString: Untagged
@@ -426,6 +428,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b993f6e80cdf5f4fab63eb2bca80b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1206429206102679700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089249728048871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71cf042fe13851e4e96a945755a77111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &2670266758344425009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089249728048871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a503637849b0cf4cbf1b023d36a9040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stamina: 0
+  loseStaminaRate: 10
+  loseStaminaIdleRate: 40
+  gainStaminaRate: 40
+  characterState: {fileID: 8833165464930663957}
 --- !u!114 &5018337237678523021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +533,7 @@ MonoBehaviour:
   jump: {fileID: -4446910204527134064}
   oobleckMovement: {fileID: 2944472760197694493}
   oobleckJump: {fileID: 6724423005524933655}
+  deathState: {fileID: 8588476487900192263}
   rb: {fileID: 0}
   input: {fileID: 0}
   animator: {fileID: 0}
@@ -509,6 +542,7 @@ MonoBehaviour:
   movement: {fileID: 0}
   gravity: {fileID: 0}
   stamina: {fileID: 0}
+  spawnPosition: {fileID: 0}
   CV: {fileID: 11400000, guid: 91154edb275c0f8428646fe7eda9fb9a, type: 2}
 --- !u!114 &5520253466155530923
 MonoBehaviour:
@@ -1232,7 +1266,7 @@ MonoBehaviour:
       timeRange: {x: 0, y: 1}
   staminaLoss: 0
   framesBeforeICanJumpAgain: 40
---- !u!114 &2670266758344425009
+--- !u!114 &8588476487900192263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1241,13 +1275,128 @@ MonoBehaviour:
   m_GameObject: {fileID: 6089249728048871412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a503637849b0cf4cbf1b023d36a9040, type: 3}
+  m_Script: {fileID: 11500000, guid: 2572bd38a044f914296436532dcb1508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stamina: 0
-  loseStaminaRate: 10
-  loseStaminaIdleRate: 40
-  gainStaminaRate: 40
+  mCState: {fileID: 0}
+  startState:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  timeEnteredCharacterState: 0
+  drown:
+    duration: 120
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  respawning:
+    duration: 10
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 3
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
 --- !u!1001 &8936278156448485696
 PrefabInstance:
   m_ObjectHideFlags: 0

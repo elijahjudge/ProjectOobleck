@@ -14,8 +14,8 @@ public class DeathState : CharacterState
 
         stateConnections = new List<StateConnection> ()
         {
+            new StateConnection(mCState.groundMovement, ()=> respawning.StateDurationOver(subHSM))
         };
-            //new StateConnection(mCState.groundMovement, ()=> respawning.StateDurationOver(subHSM))
 
         drown.InitializeAsStartState(this, new List<StateConnection>()
         {
@@ -34,13 +34,16 @@ public class DeathState_Drown : CharacterSubState
     public override void OnEnter()
     {
         base.OnEnter();
-
-        Debug.Log("Drowining");
     }
 }
 
 [System.Serializable]
 public class DeathState_Respawn : CharacterSubState
 {
-
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        cState.mCState.stamina.ResetStamina();
+        cState.transform.position = cState.mCState.spawnPosition.spawnPosition;
+    }
 }

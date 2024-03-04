@@ -26,6 +26,7 @@ public class ManagerCharacterState : MonoBehaviour
     [HideInInspector] public CharacterMovement movement;
     [HideInInspector] public BungoGravity gravity;
     [HideInInspector] public CharacterStamina stamina;
+    [HideInInspector] public CharacterRespawnPosition spawnPosition;
 
     public CharacterVariables CV;
     private CharacterState startingState;
@@ -37,6 +38,9 @@ public class ManagerCharacterState : MonoBehaviour
     public delegate void StateChange(GameObject gameObject,State newState);
     public static StateChange stateChanged;
 
+
+    public delegate void HealthEvent();
+    public static HealthEvent playerDied;
     // Start is called before the first frame update
     void Awake()
     {
@@ -48,7 +52,7 @@ public class ManagerCharacterState : MonoBehaviour
         input.AssignInput(GetComponent<PlayerInput>());
         input.myPlayer.currentActionMap = input.myPlayer.actions.FindActionMap("Player");
 
-        CharacterStamina.playerDied += PlayerDied;
+        CharacterStamina.playerDrowned += PlayerDied;
     }
 
     private void InitializeAllCharacterStates()
@@ -70,6 +74,7 @@ public class ManagerCharacterState : MonoBehaviour
         groundRider = GetComponent<GroundRider>();
         gravity = GetComponent<BungoGravity>();
         stamina = GetComponent<CharacterStamina>();
+        spawnPosition = GetComponent<CharacterRespawnPosition>();
     }
     private void Start()
     {
@@ -78,11 +83,22 @@ public class ManagerCharacterState : MonoBehaviour
     private void FixedUpdate()
     {
         HSM.currentState.OnTick();
+        CheckDeathFromFalling();
     }
 
 
     public void PlayerDied()
     {
         HSM.ChangeState(deathState);
+        playerDied?.Invoke();
+    }
+
+    public void CheckDeathFromFalling()
+    {
+        if (transform.position.y < -100f)
+        {
+            HSM.ChangeState(deathState,deathState.respawning);
+            PlayerDied();
+        }
     }
 }
