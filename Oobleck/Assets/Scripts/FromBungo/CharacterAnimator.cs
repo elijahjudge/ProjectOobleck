@@ -48,10 +48,11 @@ public class CharacterAnimator : MonoBehaviour
             return;
 
         animator.SetBool("Grounded", true);
-        animator.SetTrigger("LandedGround");
-        animator.ResetTrigger("LeftGround");
+        //animator.SetTrigger("LandedGround");
+        //animator.ResetTrigger("LeftGround");
 
-        animator.Play("GroundLanding", 1, 0f);
+        //animator.Play("GroundLanding", 1, 0f);
+
         //ManagerAudio.instance.Play(landingSound);
     }
 
@@ -60,9 +61,9 @@ public class CharacterAnimator : MonoBehaviour
         if (this.gameObject != gameObject)
             return;
 
-        animator.SetTrigger("LeftGround");
-        animator.ResetTrigger("LandedGround");
-        animator.SetBool("Grounded", false);
+        //animator.SetTrigger("LeftGround");
+        //animator.ResetTrigger("LandedGround");
+        //animator.SetBool("Grounded", false);
     }
 
     public void ResetStateWait(GameObject gameObject, State newState)

@@ -9,13 +9,14 @@ public class Ooblegator_Chomp_Hold : EnemyState
     [SerializeField] public Ooblegator_ChompHold_SS chompHold;
     [SerializeField] public Ooblegator_PostChompClarity postChompClarity;
 
+    public Oobleckgator_Attack aggroState;
     public Collider physicalCollider;
     public void Awake()
     {
 
         stateConnections = new List<StateConnection>()
         {
-            new StateConnection(mEState.patrolState, () => postChompClarity.StateDurationOver(subHSM))
+            new StateConnection(mEState.aggroState, () => postChompClarity.StateDurationOver(subHSM), aggroState.chasing)
         };
 
         chompHold.InitializeAsStartState(this, new List<StateConnection>() {

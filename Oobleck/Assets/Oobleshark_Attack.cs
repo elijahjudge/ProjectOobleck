@@ -8,14 +8,16 @@ public class Oobleshark_Attack : EnemyState
     [SerializeField] public Oobleshark_Attack_CirclePlayer circlingPlayer;
     [SerializeField] public Oobleshark_Attack_StartUp attackStartup;
     [SerializeField] public Oobleshark_Attack_Dive diveAttack;
+    [SerializeField] public Oobleshark_HideUnderNavMesh hideUnderNavMesh;
     [SerializeField] public Oobleshark_Attack_EndLag endLag;
 
     public float distanceBeforeOutOfRange;
+    public bool busyEating;
     public void Awake()
     {
         stateConnections = new List<StateConnection>()
         {
-            new StateConnection(mEState.patrolState,PlayerOutOfRange)
+            new StateConnection(mEState.patrolState,() => endLag.StateDurationOver(subHSM))
         };
 
         alerted.InitializeAsStartState(this, new List<StateConnection>() {
@@ -33,9 +35,13 @@ public class Oobleshark_Attack : EnemyState
 
         diveAttack.Initialize(this, new List<StateConnection>()
         {
-        new StateConnection(endLag,() => diveAttack.StateDurationOver(subHSM))
+        new StateConnection(hideUnderNavMesh,() => diveAttack.StateDurationOver(subHSM))
         });
 
+        hideUnderNavMesh.Initialize(this, new List<StateConnection>()
+        {
+        new StateConnection(endLag,() => hideUnderNavMesh.StateDurationOver(subHSM))
+        });
 
         endLag.Initialize(this, new List<StateConnection>()
         {
@@ -55,7 +61,8 @@ public class Oobleshark_Attack : EnemyState
 
     public bool PlayerOutOfRange()
     {
-        return Vector3.Distance(transform.position, mEState.player.position) > distanceBeforeOutOfRange;
+        return Vector3.Distance(transform.position, mEState.player.position) > distanceBeforeOutOfRange
+            && !busyEating;
     }
 
    
@@ -109,7 +116,7 @@ public class Oobleshark_Attack_StartUp: EnemySubState
 }
 
 [System.Serializable]
-public class Oobleshark_Attack_Dive : EnemySubState
+public class Oobleshark_Attack_Dive : EnemyAttackSubstate
 {
     public Rigidbody rb;
     public float jumpHorizontalForce;
@@ -117,8 +124,10 @@ public class Oobleshark_Attack_Dive : EnemySubState
     public float gravity;
     public override void OnEnter()
     {
+        rb.isKinematic = false;
+
+        (eState as Oobleshark_Attack).busyEating = true;
         rb.velocity = Vector3.zero;
-        eState.mEState.navMesh.updatePosition = false;
         base.OnEnter();
         Vector3 direction = (-eState.transform.position + eState.mEState.player.position).normalized;
         //direction = Vector3.Scale(direction, new Vector3(1f, 0f, 1f));
@@ -139,17 +148,37 @@ public class Oobleshark_Attack_Dive : EnemySubState
     {
         base.OnExit();
         rb.velocity = Vector3.zero;
-
-        eState.mEState.enemyAnimator.PlayAnimation("ComeBack");
-        eState.mEState.navMesh.Warp(eState.transform.position);
-        eState.mEState.navMesh.updatePosition = true;
-
+        rb.isKinematic = true;
+        
     }
 }
 
 [System.Serializable]
+public class Oobleshark_HideUnderNavMesh : EnemySubState
+{
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        eState.transform.position = new Vector3(eState.transform.position.x,-10f, eState.transform.position.z);
+    }
+    public override void OnExit()
+    {
+        base.OnExit();
+        eState.mEState.enemyAnimator.PlayAnimation("ComeBack");
+        eState.mEState.navMesh.Warp(eState.transform.position);
+        eState.mEState.navMesh.updatePosition = true;
+    }
+}
+
+
+[System.Serializable]
 public class Oobleshark_Attack_EndLag : EnemySubState
 {
+    public override void OnExit()
+    {
+        base.OnExit();
+        (eState as Oobleshark_Attack).busyEating = false;
+    }
 
 }
 

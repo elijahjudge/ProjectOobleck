@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 0.79999995
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
         type: 3}
@@ -21,7 +21,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 0.79999995
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
         type: 3}
@@ -165,8 +165,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 2547085225211653961}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 1.53
-  m_Speed: 3.5
+  m_Radius: 2
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -213,7 +213,8 @@ MonoBehaviour:
   mEState: {fileID: 0}
   chill:
     duration: 0
-    stateUsesNavmesh: 0
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 1
     goToPlayer: 0
     speed: 5
     movementPattern:
@@ -263,7 +264,7 @@ MonoBehaviour:
       timeRange: {x: 0, y: 1}
     facePlayerOnEnter: 0
     allowedAngle: 0
-    alwaysLookAtPlayer: 1
+    alwaysLookAtPlayer: 0
     angularSpeed: 120
     enterAnimation: Idle
     hardPlayAnimation: 0
@@ -279,7 +280,8 @@ MonoBehaviour:
     waitRange: {x: 4, y: 12}
   goToNewSpot:
     duration: 120
-    stateUsesNavmesh: 1
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 1
     goToPlayer: 0
     speed: 2.5
     movementPattern:
@@ -361,7 +363,8 @@ MonoBehaviour:
   mEState: {fileID: 0}
   alerted:
     duration: 30
-    stateUsesNavmesh: 1
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 0
     goToPlayer: 0
     speed: 0
     movementPattern:
@@ -376,7 +379,7 @@ MonoBehaviour:
     facePlayerOnEnter: 0
     allowedAngle: 0
     alwaysLookAtPlayer: 1
-    angularSpeed: 120
+    angularSpeed: 300
     enterAnimation: Alert
     hardPlayAnimation: 0
     effects:
@@ -390,7 +393,8 @@ MonoBehaviour:
     eState: {fileID: 0}
   chasing:
     duration: 0
-    stateUsesNavmesh: 1
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 0
     goToPlayer: 1
     speed: 7
     movementPattern:
@@ -455,7 +459,8 @@ MonoBehaviour:
     eState: {fileID: 0}
   attacking:
     duration: 60
-    stateUsesNavmesh: 1
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 0
     goToPlayer: 0
     speed: 0
     movementPattern:
@@ -483,6 +488,37 @@ MonoBehaviour:
       durationalSounds: []
     eState: {fileID: 0}
     attack: {fileID: 11400000, guid: b78c81ba4ef08dc419c556dfaf8b697f, type: 2}
+  endLag:
+    duration: 40
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 0
+    goToPlayer: 0
+    speed: 0
+    movementPattern:
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      valueRange: {x: 0, y: 1}
+      timeRange: {x: 0, y: 1}
+    facePlayerOnEnter: 0
+    allowedAngle: 0
+    alwaysLookAtPlayer: 1
+    angularSpeed: 400
+    enterAnimation: 
+    hardPlayAnimation: 0
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    eState: {fileID: 0}
+    attack: {fileID: 0}
   rangeRequiredForAttack: 4
   distanceBeforeOutOfRange: 25
 --- !u!114 &9071096315867869244
@@ -530,7 +566,8 @@ MonoBehaviour:
   mEState: {fileID: 0}
   chompHold:
     duration: 120
-    stateUsesNavmesh: 1
+    updateNavMeshPosition: 0
+    updateNavMeshRotation: 0
     goToPlayer: 1
     speed: 0
     movementPattern:
@@ -558,8 +595,9 @@ MonoBehaviour:
       durationalSounds: []
     eState: {fileID: 0}
   postChompClarity:
-    duration: 60
-    stateUsesNavmesh: 0
+    duration: 120
+    updateNavMeshPosition: 0
+    updateNavMeshRotation: 0
     goToPlayer: 0
     speed: 0
     movementPattern:
@@ -573,8 +611,8 @@ MonoBehaviour:
       timeRange: {x: 0, y: 1}
     facePlayerOnEnter: 0
     allowedAngle: 0
-    alwaysLookAtPlayer: 0
-    angularSpeed: 0
+    alwaysLookAtPlayer: 1
+    angularSpeed: 120
     enterAnimation: Idle
     hardPlayAnimation: 0
     effects:
@@ -586,6 +624,7 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     eState: {fileID: 0}
+  aggroState: {fileID: 2564517605399883381}
   physicalCollider: {fileID: 7187880211317743738}
 --- !u!136 &7187880211317743738
 CapsuleCollider:

@@ -64,6 +64,14 @@ public class HierarchicalStateMachine
         currentState.OnEnter();
     }
 
+    public void ChangeState(EnemyState newState, EnemySubState subState)
+    {
+        currentState.OnExit();
+        newState.subHSM.ResetState(subState);
+        currentState = newState;
+        currentState.OnEnter();
+    }
+
     public void ChangeState(EnemyState newState, State subState)
     {
         currentState.OnExit();

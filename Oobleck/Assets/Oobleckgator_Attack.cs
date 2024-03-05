@@ -8,6 +8,8 @@ public class Oobleckgator_Attack : EnemyState
     [SerializeField] public Oobleckgator_Attack_Alerted alerted;
     [SerializeField] public Oobleckgator_Attack_Chase chasing;
     [SerializeField] public Oobleckgator_Attack_Chomp attacking;
+    [SerializeField] public Oobleckgator_Attack_EndLag endLag;
+
 
     public float rangeRequiredForAttack;
     public float distanceBeforeOutOfRange;
@@ -28,7 +30,12 @@ public class Oobleckgator_Attack : EnemyState
 
         attacking.Initialize(this, new List<StateConnection>()
         {
-        new StateConnection(chasing,() => attacking.StateDurationOver(subHSM))
+        new StateConnection(endLag,() => attacking.StateDurationOver(subHSM))
+        });
+
+        endLag.Initialize(this, new List<StateConnection>()
+        {
+        new StateConnection(chasing,() => endLag.StateDurationOver(subHSM))
         });
 
         subHSM = new HierarchicalStateMachine(startState);
@@ -66,6 +73,12 @@ public class Oobleckgator_Attack_Chase : EnemySubState
 
 [System.Serializable]
 public class Oobleckgator_Attack_Chomp : EnemyAttackSubstate
+{
+
+}
+
+[System.Serializable]
+public class Oobleckgator_Attack_EndLag : EnemyAttackSubstate
 {
 
 }

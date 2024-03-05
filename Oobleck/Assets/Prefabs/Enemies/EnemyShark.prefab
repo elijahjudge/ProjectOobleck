@@ -78,6 +78,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 283408252457741583}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &440826125195091581 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 428122664903603058, guid: b904f6bd50ad8f3469d7531f74655844,
+    type: 3}
+  m_PrefabInstance: {fileID: 283408252457741583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1094295115958407262 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b904f6bd50ad8f3469d7531f74655844,
@@ -218,10 +224,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4335491555413952187}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 373314228238337627}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
         type: 3}
@@ -231,6 +233,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -6428275667492410344}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6442883564012567947}
   m_SourcePrefab: {fileID: 100100000, guid: de886d1ea42a0314a82a4d9b0dcb07ce, type: 3}
 --- !u!1 &2547085225211653961 stripped
 GameObject:
@@ -247,7 +253,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2547085225211653961}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 8.84
+  m_Radius: 4.5
   m_Speed: 91.42488
   m_Acceleration: 10
   avoidancePriority: 50
@@ -294,22 +300,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 363991393388625321}
   navMeshAgent: {fileID: 6054301240336362019}
---- !u!114 &4335491555413952187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2547085225211653961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2737294ce750a374ebc893c7d1f4583b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: {fileID: 2887581593286915571}
-  DrawGizmos: 1
-  activeHitBoxes: []
-  mEState: {fileID: 3958411116275387297}
 --- !u!114 &373314228238337627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +315,8 @@ MonoBehaviour:
   mEState: {fileID: 0}
   chill:
     duration: 0
-    stateUsesNavmesh: 0
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 1
     goToPlayer: 0
     speed: 5
     movementPattern:
@@ -388,10 +379,11 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     eState: {fileID: 0}
-    waitRange: {x: 0.5, y: 2}
+    waitRange: {x: 0, y: 0.5}
   goToNewSpot:
-    duration: 300
-    stateUsesNavmesh: 1
+    duration: 120
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 1
     goToPlayer: 0
     speed: 15
     movementPattern:
@@ -473,7 +465,7 @@ MonoBehaviour:
       durationalSounds: []
     eState: {fileID: 0}
     searchForNewSpotRadius: 40
-    distanceToStop: 1
+    distanceToStop: 8
   distanceInRange: 40
   touchingOobleck: 0
 --- !u!114 &7886521435735112758
@@ -490,8 +482,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mEState: {fileID: 0}
   alerted:
-    duration: 10
-    stateUsesNavmesh: 0
+    duration: 20
+    updateNavMeshPosition: 0
+    updateNavMeshRotation: 0
     goToPlayer: 0
     speed: 0
     movementPattern:
@@ -505,8 +498,8 @@ MonoBehaviour:
       timeRange: {x: 0, y: 1}
     facePlayerOnEnter: 1
     allowedAngle: 0
-    alwaysLookAtPlayer: 0
-    angularSpeed: 0
+    alwaysLookAtPlayer: 1
+    angularSpeed: 400
     enterAnimation: Alerted
     hardPlayAnimation: 0
     effects:
@@ -520,7 +513,8 @@ MonoBehaviour:
     eState: {fileID: 0}
   circlingPlayer:
     duration: 0
-    stateUsesNavmesh: 1
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 1
     goToPlayer: 1
     speed: 25
     movementPattern:
@@ -602,10 +596,11 @@ MonoBehaviour:
       durationalSounds: []
     eState: {fileID: 0}
     sharkCircleTransform: {fileID: 0}
-    attackWaitRange: {x: 4, y: 9}
+    attackWaitRange: {x: 2, y: 10}
   attackStartup:
     duration: 60
-    stateUsesNavmesh: 0
+    updateNavMeshPosition: 0
+    updateNavMeshRotation: 0
     goToPlayer: 0
     speed: 0
     movementPattern:
@@ -620,7 +615,7 @@ MonoBehaviour:
     facePlayerOnEnter: 0
     allowedAngle: 0
     alwaysLookAtPlayer: 1
-    angularSpeed: 500
+    angularSpeed: 120
     enterAnimation: AttackStartup
     hardPlayAnimation: 1
     effects:
@@ -633,8 +628,9 @@ MonoBehaviour:
       durationalSounds: []
     eState: {fileID: 0}
   diveAttack:
-    duration: 300
-    stateUsesNavmesh: 0
+    duration: 90
+    updateNavMeshPosition: 0
+    updateNavMeshRotation: 0
     goToPlayer: 0
     speed: 0
     movementPattern:
@@ -661,13 +657,15 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     eState: {fileID: 0}
+    attack: {fileID: 11400000, guid: 49c7eb66ae9675a47b1805bf0c90e75e, type: 2}
     rb: {fileID: -6428275667492410344}
     jumpHorizontalForce: 15
     jumpVerticalForce: 21
     gravity: 60
-  endLag:
-    duration: 30
-    stateUsesNavmesh: 0
+  hideUnderNavMesh:
+    duration: 200
+    updateNavMeshPosition: 0
+    updateNavMeshRotation: 0
     goToPlayer: 0
     speed: 0
     movementPattern:
@@ -694,7 +692,38 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     eState: {fileID: 0}
+  endLag:
+    duration: 30
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 1
+    goToPlayer: 0
+    speed: 0
+    movementPattern:
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      valueRange: {x: 0, y: 1}
+      timeRange: {x: 0, y: 1}
+    facePlayerOnEnter: 0
+    allowedAngle: 0
+    alwaysLookAtPlayer: 1
+    angularSpeed: 400
+    enterAnimation: 
+    hardPlayAnimation: 0
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    eState: {fileID: 0}
   distanceBeforeOutOfRange: 60
+  busyEating: 0
 --- !u!54 &-6428275667492410344
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -722,6 +751,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6442883564012567947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547085225211653961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6b39af628c58e4f8c8b8180460d797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 2887581593286915571}
+  DrawGizmos: 1
+  activeHitBoxes: []
+  mEState: {fileID: 3958411116275387297}
+  sharkEatBone: {fileID: 440826125195091581}
 --- !u!4 &2887581593286915571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de886d1ea42a0314a82a4d9b0dcb07ce,

@@ -89,7 +89,6 @@ public class EnemyState : MonoBehaviour, State
 
     public virtual void OnEnter()
     {
-        Debug.Log("State Enter");
         timeEntered = Time.time;
         subHSM.currentState.OnEnter();
     }
@@ -106,7 +105,7 @@ public class EnemyState : MonoBehaviour, State
         {
             if (sc.ConditionMetForGoingToState())
             {
-                LeaveState(sc.state as EnemyState, sc.subState);
+                LeaveState(sc.state as EnemyState, sc.subState as EnemySubState);
                 return;
             }
         }
@@ -114,12 +113,12 @@ public class EnemyState : MonoBehaviour, State
         subHSM.currentState.OnTick();
     }
 
-    public void LeaveState(EnemyState newState, State newStateSubState)
+    public void LeaveState(EnemyState newState, EnemySubState newStateSubState)
     {
         if (newStateSubState == null)
             mEState.HSM.ChangeState(newState);
         else
-            mEState.HSM.ChangeState(newState, newStateSubState as CharacterSubState);    
+            mEState.HSM.ChangeState(newState, newStateSubState);    
     }
 
     public void OnReturn()
@@ -147,7 +146,8 @@ public class EnemySubState : State
     public int duration;
 
     [Header("NavMesh")]
-    public bool stateUsesNavmesh;
+    public bool updateNavMeshPosition;
+    public bool updateNavMeshRotation;
 
     [Header("Movement")]
     public bool goToPlayer;
@@ -267,23 +267,10 @@ public class EnemySubState : State
 
     private void SetNavMeshVariables()
     {
-        if (stateUsesNavmesh)
-            eState.mEState.navMesh.isStopped = false;
-        else
-            eState.mEState.navMesh.isStopped = true;
-
+        eState.mEState.navMesh.updatePosition = updateNavMeshPosition;
+        eState.mEState.navMesh.updateRotation = updateNavMeshRotation;
         eState.mEState.navMesh.speed = speed;
         eState.mEState.navMesh.angularSpeed = angularSpeed;
-
-        if(alwaysLookAtPlayer || angularSpeed == 0f)
-        {
-            eState.mEState.navMesh.updateRotation = false;
-        }
-        else
-        {
-            eState.mEState.navMesh.updateRotation = true;
-        }
-
     }
 
     private void ResetStateTime()

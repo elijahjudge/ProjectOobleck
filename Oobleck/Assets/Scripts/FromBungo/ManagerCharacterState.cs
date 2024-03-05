@@ -17,7 +17,8 @@ public class ManagerCharacterState : MonoBehaviour
     public CharacterState oobleckMovement;
     public Oobleck_Jump oobleckJump;
     public Ooble_InAlligatorMouth ooble_InAlligatorMouth;
-    public DeathState deathState;
+    public Ooble_Drown deathState;
+    public Ooble_EatenByShark sharkMouthState;
 
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public InputReader input;
@@ -64,6 +65,7 @@ public class ManagerCharacterState : MonoBehaviour
         oobleckJump.Initialize(this);
         deathState.Initialize(this);
         ooble_InAlligatorMouth.Initialize(this);
+        sharkMouthState.Initialize(this);
     }
 
     private void GetAllReferences()

@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   owner: {fileID: 1807506237285845533}
-  mEState: {fileID: 8833165464930663957}
+  mCState: {fileID: 8833165464930663957}
 --- !u!1 &5057579345824619602
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 6724423005524933655}
   - component: {fileID: 8588476487900192263}
   - component: {fileID: 3728077746350005152}
+  - component: {fileID: 202762270469021159}
   m_Layer: 3
   m_Name: Ooble
   m_TagString: Untagged
@@ -473,7 +474,7 @@ MonoBehaviour:
   stamina: 0
   loseStaminaRate: 10
   loseStaminaIdleRate: 40
-  loseStaminaChompHoldRate: 5
+  loseStaminaChompHoldRate: 2
   gainStaminaRate: 40
   characterState: {fileID: 8833165464930663957}
 --- !u!114 &5018337237678523021
@@ -553,6 +554,7 @@ MonoBehaviour:
   oobleckJump: {fileID: 6724423005524933655}
   ooble_InAlligatorMouth: {fileID: 3728077746350005152}
   deathState: {fileID: 8588476487900192263}
+  sharkMouthState: {fileID: 202762270469021159}
   rb: {fileID: 0}
   input: {fileID: 0}
   animator: {fileID: 0}
@@ -1339,6 +1341,46 @@ MonoBehaviour:
     cState: {fileID: 0}
   timeEnteredCharacterState: 0
   drown:
+    duration: 60
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 1
+    stateGravity: 10
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+    physicalCollider: {fileID: 560749370207921096}
+  hideUnderSpawn:
     duration: 120
     useCustomMovementLogic: 0
     stateMovement:
@@ -1378,7 +1420,7 @@ MonoBehaviour:
       durationalSounds: []
     cState: {fileID: 0}
   respawning:
-    duration: 10
+    duration: 35
     useCustomMovementLogic: 0
     stateMovement:
       enterVelocity: 3
@@ -1508,6 +1550,180 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
+--- !u!114 &202762270469021159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089249728048871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9bdfc3539609047bd677c3c636055a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCState: {fileID: 0}
+  startState:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  timeEnteredCharacterState: 0
+  eatenByShark:
+    duration: 90
+    useCustomMovementLogic: 1
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 1
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+    physicalCollider: {fileID: 560749370207921096}
+  hideUnderSpawnPosition:
+    duration: 60
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  respawn:
+    duration: 35
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  sharksMouth: {fileID: 0}
+  sharkMouthPosition: {x: 0, y: -1.2, z: 2}
+  sharkMouthRotation: {x: 122, y: -6, z: 3}
 --- !u!1001 &8936278156448485696
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class CharacterTarget : MonoBehaviour
     {
         GroundRider.characterTouchedGround += AdjustPlayerHeight;
         GroundRider.characterTouchedOobleck += AdjustPlayerHeight;
-
+        Ooble_EatenByShark_SS.playerEatenByShark += PlayerDied;
     }
 
     private void Start()
