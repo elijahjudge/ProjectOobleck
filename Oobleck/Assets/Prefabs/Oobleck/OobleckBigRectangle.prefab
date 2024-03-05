@@ -319,7 +319,7 @@ SpringJoint:
   m_ConnectedAnchor: {x: 12.799999, y: 0, z: 27.025002}
   serializedVersion: 2
   m_Spring: 75
-  m_Damper: 1
+  m_Damper: 5
   m_MinDistance: 0
   m_MaxDistance: 0.05
   m_Tolerance: 0.025
@@ -607,7 +607,7 @@ SpringJoint:
   m_ConnectedAnchor: {x: -12.6875, y: 0, z: -26.849998}
   serializedVersion: 2
   m_Spring: 75
-  m_Damper: 1
+  m_Damper: 5
   m_MinDistance: 0
   m_MaxDistance: 0.05
   m_Tolerance: 0.025
@@ -691,7 +691,7 @@ SpringJoint:
   m_ConnectedAnchor: {x: -12.625, y: 0, z: 26.425}
   serializedVersion: 2
   m_Spring: 75
-  m_Damper: 1
+  m_Damper: 5
   m_MinDistance: 0
   m_MaxDistance: 0.05
   m_Tolerance: 0.025
@@ -775,7 +775,7 @@ SpringJoint:
   m_ConnectedAnchor: {x: 13, y: 0, z: -26.849998}
   serializedVersion: 2
   m_Spring: 75
-  m_Damper: 1
+  m_Damper: 5
   m_MinDistance: 0
   m_MaxDistance: 0.05
   m_Tolerance: 0.025

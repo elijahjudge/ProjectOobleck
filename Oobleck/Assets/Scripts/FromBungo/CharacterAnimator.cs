@@ -23,6 +23,9 @@ public class CharacterAnimator : MonoBehaviour
 
         GroundRider.characterTouchedGround += SetGrounded;
         GroundRider.characterLeftGround += LeftGrounded;
+        GroundRider.characterTouchedOobleck += SetGrounded;
+        GroundRider.characterLeftOobleck += LeftGrounded;
+
         ManagerCharacterState.stateChanged += ResetStateWait;
         Ooble_Jump.playerJumped += PlayerJumped;
 
@@ -39,7 +42,7 @@ public class CharacterAnimator : MonoBehaviour
         //animator.SetFloat("StateWait", animator.GetFloat("StateWait") + Time.deltaTime);
         animator.SetFloat("TimeSinceJump", animator.GetFloat("TimeSinceJump") + Time.deltaTime);
     }
-    public void SetGrounded(bool oobleck)
+    public void SetGrounded()
     {
         if (this.gameObject != gameObject)
             return;
@@ -52,7 +55,7 @@ public class CharacterAnimator : MonoBehaviour
         //ManagerAudio.instance.Play(landingSound);
     }
 
-    public void LeftGrounded(bool oobleck)
+    public void LeftGrounded()
     {
         if (this.gameObject != gameObject)
             return;

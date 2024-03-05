@@ -8,6 +8,8 @@ public class CharacterStamina : MonoBehaviour
 
     public float loseStaminaRate;
     public float loseStaminaIdleRate;
+    public float loseStaminaChompHoldRate;
+
     public float gainStaminaRate;
     private float maxStamina = 100f;
 
@@ -43,6 +45,18 @@ public class CharacterStamina : MonoBehaviour
     public void LoseStaminaIdle()
     {
         stamina -= Time.deltaTime * loseStaminaIdleRate;
+        ClampStamina();
+        losingStamina?.Invoke(GetStaminaNormalized());
+
+        if (stamina <= 0)
+        {
+            allStaminaLost?.Invoke();
+        }
+    }
+
+    public void LoseStaminaChompHold()
+    {
+        stamina -= Time.deltaTime * loseStaminaChompHoldRate;
         ClampStamina();
         losingStamina?.Invoke(GetStaminaNormalized());
 

@@ -16,6 +16,7 @@ public class ManagerCharacterState : MonoBehaviour
     [Header("In Oobleck")]
     public CharacterState oobleckMovement;
     public Oobleck_Jump oobleckJump;
+    public Ooble_InAlligatorMouth ooble_InAlligatorMouth;
     public DeathState deathState;
 
     [HideInInspector] public Rigidbody rb;
@@ -52,7 +53,7 @@ public class ManagerCharacterState : MonoBehaviour
         input.AssignInput(GetComponent<PlayerInput>());
         input.myPlayer.currentActionMap = input.myPlayer.actions.FindActionMap("Player");
 
-        CharacterStamina.playerDrowned += PlayerDied;
+        CharacterStamina.playerDrowned += PlayerDie;
     }
 
     private void InitializeAllCharacterStates()
@@ -62,6 +63,7 @@ public class ManagerCharacterState : MonoBehaviour
         oobleckMovement.Initialize(this);
         oobleckJump.Initialize(this);
         deathState.Initialize(this);
+        ooble_InAlligatorMouth.Initialize(this);
     }
 
     private void GetAllReferences()
@@ -87,7 +89,7 @@ public class ManagerCharacterState : MonoBehaviour
     }
 
 
-    public void PlayerDied()
+    public void PlayerDie()
     {
         HSM.ChangeState(deathState);
         playerDied?.Invoke();
@@ -98,7 +100,7 @@ public class ManagerCharacterState : MonoBehaviour
         if (transform.position.y < -100f)
         {
             HSM.ChangeState(deathState,deathState.respawning);
-            PlayerDied();
+            PlayerDie();
         }
     }
 }

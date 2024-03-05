@@ -41,11 +41,13 @@ public class GroundRider : MonoBehaviour
     public bool grounded;
     public bool touchingOobleck;
 
-    public delegate void GroundRelatedDelegate(bool Oobleck);
+    public delegate void GroundRelatedDelegate();
     public static GroundRelatedDelegate characterTouchedGround;
     public static GroundRelatedDelegate characterLeftGround;
-
+    public static GroundRelatedDelegate characterTouchedOobleck;
+    public static GroundRelatedDelegate characterLeftOobleck;
     public Transform oobleckParticlePosition;
+
     public float latestGroundHeight;
     void Awake()
     {
@@ -63,9 +65,13 @@ public class GroundRider : MonoBehaviour
         {
             if (!grounded)
             {
-                characterTouchedGround?.Invoke(touchingOobleck);
+                if (touchingOobleck)
+                    characterTouchedOobleck?.Invoke();
+                else
+                    characterTouchedGround?.Invoke();
 
-                if(touchingOobleck)
+
+                if (touchingOobleck)
                 {
 
                 }
@@ -75,15 +81,17 @@ public class GroundRider : MonoBehaviour
         }
         else
         {
-            if(grounded)
-                characterLeftGround?.Invoke(touchingOobleck);
+            if (touchingOobleck)
+                characterLeftOobleck?.Invoke();
+            else
+                characterLeftGround?.Invoke();
 
             grounded = false;
         }
 
     }
 
-    private void UpdateGroundHeight(bool oobleck)
+    private void UpdateGroundHeight()
     {
         latestGroundHeight = transform.position.y;
     }

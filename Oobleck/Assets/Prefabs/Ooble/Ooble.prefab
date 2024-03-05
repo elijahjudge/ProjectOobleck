@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9020925107322463141}
   - component: {fileID: 560749370207921096}
+  - component: {fileID: 310113262971623596}
   m_Layer: 3
   m_Name: PhysicalCollider
   m_TagString: Untagged
@@ -55,6 +56,21 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 1.4, z: 0}
+--- !u!114 &310113262971623596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3408739451421928691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cffa0e90c351a4484c81b9a8f30caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  owner: {fileID: 1807506237285845533}
+  mEState: {fileID: 8833165464930663957}
 --- !u!1 &5057579345824619602
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +238,7 @@ GameObject:
   - component: {fileID: 2944472760197694493}
   - component: {fileID: 6724423005524933655}
   - component: {fileID: 8588476487900192263}
+  - component: {fileID: 3728077746350005152}
   m_Layer: 3
   m_Name: Ooble
   m_TagString: Untagged
@@ -456,6 +473,7 @@ MonoBehaviour:
   stamina: 0
   loseStaminaRate: 10
   loseStaminaIdleRate: 40
+  loseStaminaChompHoldRate: 5
   gainStaminaRate: 40
   characterState: {fileID: 8833165464930663957}
 --- !u!114 &5018337237678523021
@@ -533,6 +551,7 @@ MonoBehaviour:
   jump: {fileID: -4446910204527134064}
   oobleckMovement: {fileID: 2944472760197694493}
   oobleckJump: {fileID: 6724423005524933655}
+  ooble_InAlligatorMouth: {fileID: 3728077746350005152}
   deathState: {fileID: 8588476487900192263}
   rb: {fileID: 0}
   input: {fileID: 0}
@@ -1235,7 +1254,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      valueRange: {x: 5, y: 15}
+      valueRange: {x: 5, y: 18}
       timeRange: {x: 0, y: 1}
     speedFromStamina:
       curve:
@@ -1264,7 +1283,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       valueRange: {x: 1, y: 5}
       timeRange: {x: 0, y: 1}
-  staminaLoss: 0
+  staminaLoss: 1
   framesBeforeICanJumpAgain: 40
 --- !u!114 &8588476487900192263
 MonoBehaviour:
@@ -1388,6 +1407,98 @@ MonoBehaviour:
     simulateGravity: 0
     stateGravity: 0
     enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+--- !u!114 &3728077746350005152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089249728048871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e015ee663235de44d9d3f5ae11e864e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCState: {fileID: 0}
+  startState:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  timeEnteredCharacterState: 0
+  inAlligatorMouth:
+    duration: 120
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 3
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 1
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 1
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 3
+      rotationForce: 5
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 1
+    stateGravity: 60
+    enterAnimation: Idle
     effects:
       effectsOnStart: []
       effectsOnExit: []

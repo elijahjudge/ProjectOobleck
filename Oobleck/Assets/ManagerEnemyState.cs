@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 using UnityEngine.Windows;
+using Random = UnityEngine.Random;
 
 public class ManagerEnemyState : MonoBehaviour
 {
@@ -14,11 +16,12 @@ public class ManagerEnemyState : MonoBehaviour
 
     [Header("Enemy States")]
     public EnemyState patrolState;
-    public EnemyState enemyTargetedState;
+    public EnemyState aggroState;
+    public EnemyState chompHold;
 
-
-    [HideInInspector] public Animator animator;
     [HideInInspector] public NavMeshAgent navMesh;
+    [HideInInspector] public EnemyAnimator enemyAnimator;
+    [HideInInspector] public BungoHitbox_Spawner hitSpawner;
 
     private Vector3 oldPosition;
     // Start is called before the first frame update
@@ -38,13 +41,17 @@ public class ManagerEnemyState : MonoBehaviour
     private void InitializeAllCharacterStates()
     {
         patrolState.Initialize(this);
-        enemyTargetedState.Initialize(this);
+        aggroState.Initialize(this);
+
+        if(chompHold != null)
+            chompHold.Initialize(this);
     }
 
     private void GetAllReferences()
     {
-        animator = GetComponent<Animator>();
+        enemyAnimator = GetComponent<EnemyAnimator>();
         navMesh = GetComponent<NavMeshAgent>();
+        hitSpawner = GetComponent<BungoHitbox_Spawner>();
     }
 
     private void FixedUpdate()
@@ -149,11 +156,14 @@ public class EnemySubState : State
     private float movementPatternOffset;
 
     [Header("Rotation")]
+    public bool facePlayerOnEnter;
+    public float allowedAngle;
     public bool alwaysLookAtPlayer;
     public float angularSpeed;
 
     [Header("Animation")]
     public string enterAnimation;
+    public bool hardPlayAnimation;
 
     [Header("Effects")]
     public StateEffects effects;
@@ -187,10 +197,15 @@ public class EnemySubState : State
     {
         movementPatternOffset = Random.Range(movementPattern.timeRange.x, movementPattern.timeRange.y);
 
-        if (stateUsesNavmesh)
-            eState.mEState.navMesh.isStopped = false;
-        else
-            eState.mEState.navMesh.isStopped = true;
+        if(facePlayerOnEnter)
+        {
+            Quaternion goalRotation = Quaternion.LookRotation(-eState.transform.position + eState.mEState.player.transform.position, Vector3.up);
+
+            eState.transform.rotation = Quaternion.Slerp(eState.transform.rotation, goalRotation, allowedAngle);
+            
+        }
+
+       
 
         SetNavMeshVariables();
 
@@ -239,20 +254,34 @@ public class EnemySubState : State
         {
             if (enterAnimation == "")
                 return;
+      
+            eState.mEState.enemyAnimator.SetAnimationVariable(enterAnimation, true);
 
-            eState.mEState.animator.Play(enterAnimation, 0, 0f);
+            if(hardPlayAnimation)
+            {
+                eState.mEState.enemyAnimator.PlayAnimation(enterAnimation);
+            }
         }
 
     }
 
     private void SetNavMeshVariables()
     {
+        if (stateUsesNavmesh)
+            eState.mEState.navMesh.isStopped = false;
+        else
+            eState.mEState.navMesh.isStopped = true;
+
         eState.mEState.navMesh.speed = speed;
         eState.mEState.navMesh.angularSpeed = angularSpeed;
 
-        if(alwaysLookAtPlayer)
+        if(alwaysLookAtPlayer || angularSpeed == 0f)
         {
             eState.mEState.navMesh.updateRotation = false;
+        }
+        else
+        {
+            eState.mEState.navMesh.updateRotation = true;
         }
 
     }
@@ -266,6 +295,14 @@ public class EnemySubState : State
 
     public virtual void OnExit()
     {
+        if (enterAnimation != null)
+        {
+            if (enterAnimation == "")
+                return;
+
+            eState.mEState.enemyAnimator.SetAnimationVariable(enterAnimation, false);
+        }
+
         foreach (ParticleEffectWithTransform effect in effects.effectsOnExit)
         {
             if (effect.transformOverride == null)
@@ -355,7 +392,7 @@ public class EnemySubState : State
         {
             eState.mEState.navMesh.speed = speed * movementPattern.Evaluate(Time.time + movementPatternOffset);
             eState.mEState.navMesh.SetDestination(eState.mEState.player.position);
-            Debug.Log("Path Status: " + eState.mEState.navMesh.remainingDistance);
+
         }
 
         if (alwaysLookAtPlayer)
@@ -363,7 +400,7 @@ public class EnemySubState : State
             eState.transform.rotation = Quaternion.Slerp(
                 eState.transform.rotation,
                 Quaternion.LookRotation(-eState.transform.position + eState.mEState.player.transform.position, Vector3.up),
-                Time.deltaTime * angularSpeed);
+                Time.deltaTime * angularSpeed/100f);
         }
 
         foreach (StateConnection sc in stateConnections)
@@ -390,4 +427,47 @@ public class EnemySubState : State
         return (Time.time - timeEntered) - (timeReturned - timeInterrupted);
     }  
     
+}
+
+[System.Serializable]
+public class EnemyAttackSubstate : EnemySubState
+{
+    [Header("Attack")]
+    public BungoAttackInfo attack;
+
+    private List<BungoHitChecker> hitChecker = new List<BungoHitChecker>();
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        hitChecker = eState.mEState.hitSpawner.StartAttack(attack);
+        //spawn attack
+    }
+
+    public override void OnTick()
+    {
+        base.OnTick();
+    }
+    public override void OnExit()
+    {
+        base.OnExit();
+        DestroyHitboxes(hitChecker);
+    }
+
+    protected void DestroyHitboxes(List<BungoHitChecker> hitboxes)
+    {
+        if (hitboxes == null)
+            return;
+
+        int count = hitboxes.Count;
+
+        for (int i = 0; i < count; i++)
+        {
+            if (hitboxes[i] != null)
+            {
+                hitboxes[i].DestroyMe();
+            }
+        }
+
+    }
+
 }

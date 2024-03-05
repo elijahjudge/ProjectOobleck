@@ -18,6 +18,8 @@ public class CharacterTarget : MonoBehaviour
     private void Awake()
     {
         GroundRider.characterTouchedGround += AdjustPlayerHeight;
+        GroundRider.characterTouchedOobleck += AdjustPlayerHeight;
+
     }
 
     private void Start()
@@ -40,7 +42,7 @@ public class CharacterTarget : MonoBehaviour
             Time.deltaTime * smoothing);
     }
 
-    public void AdjustPlayerHeight(bool oobleck)
+    public void AdjustPlayerHeight()
     {
         height = target.transform.position.y;
     }
@@ -66,4 +68,5 @@ public class CharacterTarget : MonoBehaviour
 
         gettingToRespawnPoint = null;
     }
+
 }
