@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ooblegator
-    second: {fileID: 2100000, guid: 433a81dc3d95cde4f8e277822b9b7cd1, type: 2}
+    second: {fileID: 2100000, guid: c35f50a9070b02448afb6a87cc615f1c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

@@ -26,17 +26,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.5142875
+      value: 3.55
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.76
+      value: 2.66
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -139.91316
+      value: -48.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
         type: 3}
@@ -346,7 +346,7 @@ MonoBehaviour:
     eState: {fileID: 0}
     searchForNewSpotRadius: 20
     distanceToStop: 1
-  distanceInRange: 20
+  distanceInRange: 40
   touchingOobleck: 0
 --- !u!114 &2564517605399883381
 MonoBehaviour:
@@ -488,6 +488,7 @@ MonoBehaviour:
       durationalSounds: []
     eState: {fileID: 0}
     attack: {fileID: 11400000, guid: b78c81ba4ef08dc419c556dfaf8b697f, type: 2}
+    attackStartFrame: 0
   endLag:
     duration: 40
     updateNavMeshPosition: 1
@@ -519,6 +520,7 @@ MonoBehaviour:
       durationalSounds: []
     eState: {fileID: 0}
     attack: {fileID: 0}
+    attackStartFrame: 0
   rangeRequiredForAttack: 4
   distanceBeforeOutOfRange: 25
 --- !u!114 &9071096315867869244
@@ -596,7 +598,7 @@ MonoBehaviour:
     eState: {fileID: 0}
   postChompClarity:
     duration: 120
-    updateNavMeshPosition: 0
+    updateNavMeshPosition: 1
     updateNavMeshRotation: 0
     goToPlayer: 0
     speed: 0

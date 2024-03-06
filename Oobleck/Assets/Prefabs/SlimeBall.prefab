@@ -82,7 +82,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 433a81dc3d95cde4f8e277822b9b7cd1, type: 2}
+      objectReference: {fileID: 2100000, guid: c35f50a9070b02448afb6a87cc615f1c, type: 2}
     - target: {fileID: 919132149155446097, guid: 004d939687dc6db408f7d332814f2291,
         type: 3}
       propertyPath: m_Name
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b4bbe5547a29541b77b9180fae48d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTorque: {x: 100, y: 100, z: 0}
+  startTorque: {x: 50, y: 1, z: 0}
 --- !u!54 &8577615183171368556
 Rigidbody:
   m_ObjectHideFlags: 0

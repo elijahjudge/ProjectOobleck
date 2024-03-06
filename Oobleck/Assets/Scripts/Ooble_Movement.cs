@@ -17,7 +17,8 @@ public class Ooble_Movement : CharacterState
         { 
             new StateConnection(mCState.jump,() => mCState.input.FrameAllowanceSouthButton(4,true)
             && Time.time - timeEnteredCharacterState > 0f),
-            new StateConnection(mCState.oobleckMovement,() => mCState.groundRider.touchingOobleck)
+            new StateConnection(mCState.oobleckMovement,() => mCState.groundRider.touchingOobleck &&
+            (subHSM.currentState != staminaRecharging))
 
         };
 
@@ -65,5 +66,15 @@ public class Run : CharacterSubState
 [System.Serializable]
 public class StaminaRecharging : CharacterSubState
 {
+    public override void OnEnter()
+    {
+        cState.mCState.animator.SetBool("StaminaRecharging",true);
+        base.OnEnter();
+    }
 
+    public override void OnExit()
+    {
+        cState.mCState.animator.SetBool("StaminaRecharging", false);
+        base.OnExit();
+    }
 }

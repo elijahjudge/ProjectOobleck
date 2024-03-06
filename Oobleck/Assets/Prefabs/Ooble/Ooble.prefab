@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 
-  showStateAsText: 1
+  showStateAsText: 0
   tmp: {fileID: 6444550380577946105, guid: c82d1fe0879c7114c9d87572517e136e, type: 3}
   transformOffset: {x: 0, y: 3, z: 0}
 --- !u!114 &380744935109305557
@@ -781,7 +781,7 @@ MonoBehaviour:
       springDamper: 0
     simulateGravity: 1
     stateGravity: 30
-    enterAnimation: StaminaRecharging
+    enterAnimation: 
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -1603,7 +1603,10 @@ MonoBehaviour:
     effects:
       effectsOnStart: []
       effectsOnExit: []
-      durationalEffects: []
+      durationalEffects:
+      - particleEffect: {fileID: 11400000, guid: 0d043cc380beac8408b8d27b52c26da3,
+          type: 2}
+        transformOverride: {fileID: 0}
       oobleckDurationEffects: []
       soundsOnStart: []
       soundsOnExit: []
