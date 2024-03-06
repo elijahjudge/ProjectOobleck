@@ -21,7 +21,11 @@ public class Oobleck_Jump : CharacterState
 
         stateConnections = new List<StateConnection>()
         {
-            new StateConnection(mCState.groundMovement,() => jump.StateDurationOver(subHSM) && mCState.groundRider.grounded && !mCState.groundRider.touchingOobleck),
+            new StateConnection(mCState.groundMovement,() => jump.StateDurationOver(subHSM) && mCState.stamina.GetStaminaNormalized() <= .7f 
+            && mCState.groundRider.grounded && !mCState.groundRider.touchingOobleck,
+            (mCState.groundMovement as Ooble_Movement).staminaRecharging),
+            new StateConnection(mCState.groundMovement,() => jump.StateDurationOver(subHSM) && mCState.groundRider.grounded && !mCState.groundRider.touchingOobleck,
+            (mCState.groundMovement as Ooble_Movement).run),
             new StateConnection(mCState.oobleckMovement,() => jump.StateDurationOver(subHSM) && mCState.groundRider.grounded && mCState.groundRider.touchingOobleck)
         };
 

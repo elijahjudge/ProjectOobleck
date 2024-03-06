@@ -8,7 +8,7 @@ public class Ooble_Movement : CharacterState
     [Header("Sub States")]
     [SerializeField] public Idle idle;
     [SerializeField] public Run run;
-
+    public StaminaRecharging staminaRecharging;
     public override void Awake()
     {
         base.Awake();
@@ -29,6 +29,11 @@ public class Ooble_Movement : CharacterState
             new StateConnection(idle,() => mCState.input.GetJoystickLeft() == Vector2.zero)
         });
 
+        staminaRecharging.Initialize(this, new List<StateConnection>()
+        {
+            new StateConnection(idle,mCState.stamina.IsStaminaFull)
+        });
+
         subHSM = new HierarchicalStateMachine(startState);
     }
 
@@ -36,6 +41,12 @@ public class Ooble_Movement : CharacterState
     {
         mCState.stamina.GainStaminaBack();
         base.OnTick();
+    }
+
+    public override void OnEnter()
+    {
+        mCState.animator.SetBool("GroundMovement", true);
+        base.OnEnter();
     }
 }
 
@@ -47,6 +58,12 @@ public class Idle : CharacterSubState
 }
 [System.Serializable]
 public class Run : CharacterSubState
+{
+
+}
+
+[System.Serializable]
+public class StaminaRecharging : CharacterSubState
 {
 
 }

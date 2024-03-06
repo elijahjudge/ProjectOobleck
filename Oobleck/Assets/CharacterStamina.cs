@@ -105,4 +105,9 @@ public class CharacterStamina : MonoBehaviour
             playerDrowned?.Invoke();
         }
     }
+
+    public bool IsStaminaFull()
+    {
+        return stamina >= maxStamina;
+    }
 }

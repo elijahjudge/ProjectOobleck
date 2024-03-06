@@ -100,7 +100,7 @@ ModelImporter:
       takeName: Armature|Run_1
       internalID: -2819699339151644480
       firstFrame: 1
-      lastFrame: 14
+      lastFrame: 13
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -419,7 +419,7 @@ ModelImporter:
       takeName: Armature|Run_1_Tilt_L
       internalID: 4279017602318954921
       firstFrame: 1
-      lastFrame: 14
+      lastFrame: 13
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -448,7 +448,36 @@ ModelImporter:
       takeName: Armature|Run_1_Tilt_R
       internalID: -3670404562997277265
       firstFrame: 1
-      lastFrame: 14
+      lastFrame: 13
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|StaminaRecharging
+      takeName: Armature|StaminaRecharging
+      internalID: 5238464675213929399
+      firstFrame: 1
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

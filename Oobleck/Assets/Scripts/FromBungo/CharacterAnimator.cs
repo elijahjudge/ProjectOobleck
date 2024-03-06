@@ -8,7 +8,7 @@ public class CharacterAnimator : MonoBehaviour
     private Animator animator;
     private Rigidbody rb;
     private InputReader inputReader;
-
+    private CharacterStamina stamina;
     public delegate void AnimatorDelayedDelegate(GameObject character,string trigger,float waitDuration = 0f);
     public delegate void AnimatorDelegate(GameObject character, string trigger);
 
@@ -20,6 +20,7 @@ public class CharacterAnimator : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         inputReader = GetComponent<InputReader>();
+        stamina = GetComponent<CharacterStamina>();
 
         GroundRider.characterTouchedGround += SetGrounded;
         GroundRider.characterLeftGround += LeftGrounded;
@@ -41,6 +42,7 @@ public class CharacterAnimator : MonoBehaviour
         animator.SetFloat("VelocityY", rb.velocity.y);
         //animator.SetFloat("StateWait", animator.GetFloat("StateWait") + Time.deltaTime);
         animator.SetFloat("TimeSinceJump", animator.GetFloat("TimeSinceJump") + Time.deltaTime);
+        animator.SetFloat("Stamina", stamina.GetStaminaNormalized());
     }
     public void SetGrounded()
     {

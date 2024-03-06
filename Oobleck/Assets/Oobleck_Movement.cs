@@ -19,7 +19,12 @@ public class Oobleck_Movement : CharacterState
             && (Time.time - mCState.oobleckJump.timeEnteredCharacterState) > 
             mCState.oobleckJump.framesBeforeICanJumpAgain.ConvertFramesToSeconds()
             ),
-            new StateConnection(mCState.groundMovement,() => !mCState.groundRider.touchingOobleck)
+            new StateConnection(mCState.groundMovement,() => !mCState.groundRider.touchingOobleck 
+            && mCState.stamina.GetStaminaNormalized() <= .7f, 
+            (mCState.groundMovement as Ooble_Movement).staminaRecharging),
+
+            new StateConnection(mCState.groundMovement,() => !mCState.groundRider.touchingOobleck,
+            (mCState.groundMovement as Ooble_Movement).run)
 
         };
 
@@ -34,6 +39,11 @@ public class Oobleck_Movement : CharacterState
         subHSM = new HierarchicalStateMachine(startState);
     }
 
+    public override void OnEnter()
+    {
+        mCState.animator.SetBool("GroundMovement", false);
+        base.OnEnter();
+    }
 }
 
 [System.Serializable]

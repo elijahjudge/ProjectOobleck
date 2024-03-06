@@ -476,7 +476,7 @@ MonoBehaviour:
   loseStaminaRate: 10
   loseStaminaIdleRate: 40
   loseStaminaChompHoldRate: 2
-  gainStaminaRate: 40
+  gainStaminaRate: 30
   characterState: {fileID: 8833165464930663957}
 --- !u!114 &5018337237678523021
 MonoBehaviour:
@@ -725,6 +725,63 @@ MonoBehaviour:
     simulateGravity: 1
     stateGravity: 60
     enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  staminaRecharging:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 2
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 1
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 1
+      rotationForce: 0.5
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 1
+    stateGravity: 30
+    enterAnimation: StaminaRecharging
     effects:
       effectsOnStart: []
       effectsOnExit: []
