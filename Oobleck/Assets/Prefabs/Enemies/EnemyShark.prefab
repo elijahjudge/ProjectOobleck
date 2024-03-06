@@ -483,8 +483,8 @@ MonoBehaviour:
   mEState: {fileID: 0}
   alerted:
     duration: 20
-    updateNavMeshPosition: 0
-    updateNavMeshRotation: 0
+    updateNavMeshPosition: 1
+    updateNavMeshRotation: 1
     goToPlayer: 0
     speed: 0
     movementPattern:
@@ -501,7 +501,7 @@ MonoBehaviour:
     alwaysLookAtPlayer: 1
     angularSpeed: 400
     enterAnimation: Alerted
-    hardPlayAnimation: 0
+    hardPlayAnimation: 1
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -615,7 +615,7 @@ MonoBehaviour:
     facePlayerOnEnter: 0
     allowedAngle: 0
     alwaysLookAtPlayer: 1
-    angularSpeed: 120
+    angularSpeed: 300
     enterAnimation: AttackStartup
     hardPlayAnimation: 1
     effects:
@@ -658,6 +658,7 @@ MonoBehaviour:
       durationalSounds: []
     eState: {fileID: 0}
     attack: {fileID: 11400000, guid: 49c7eb66ae9675a47b1805bf0c90e75e, type: 2}
+    attackStartFrame: 0
     rb: {fileID: -6428275667492410344}
     jumpHorizontalForce: 15
     jumpVerticalForce: 21
@@ -693,7 +694,7 @@ MonoBehaviour:
       durationalSounds: []
     eState: {fileID: 0}
   endLag:
-    duration: 30
+    duration: 120
     updateNavMeshPosition: 1
     updateNavMeshRotation: 1
     goToPlayer: 0

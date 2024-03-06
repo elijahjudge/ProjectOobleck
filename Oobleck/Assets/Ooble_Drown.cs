@@ -60,6 +60,7 @@ public class DeathState_Respawn : CharacterSubState
         base.OnEnter();
         cState.transform.position = cState.mCState.spawnPosition.spawnPosition;
         cState.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        cState.transform.localScale = Vector3.one;
     }
 
     public override void OnExit()
