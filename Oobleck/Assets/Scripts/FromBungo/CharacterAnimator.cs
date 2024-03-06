@@ -36,8 +36,8 @@ public class CharacterAnimator : MonoBehaviour
     }
     private void Update()
     {
-        //SetAnimatorTilt();
-        animator.SetFloat("VelocityMagnitude", rb.velocity.magnitude);
+        SetAnimatorTilt();
+        animator.SetFloat("VelocityMagnitude", new Vector3(rb.velocity.x,0f,rb.velocity.z).magnitude);
         animator.SetFloat("VelocityY", rb.velocity.y);
         //animator.SetFloat("StateWait", animator.GetFloat("StateWait") + Time.deltaTime);
         animator.SetFloat("TimeSinceJump", animator.GetFloat("TimeSinceJump") + Time.deltaTime);
@@ -63,7 +63,7 @@ public class CharacterAnimator : MonoBehaviour
 
         //animator.SetTrigger("LeftGround");
         //animator.ResetTrigger("LandedGround");
-        //animator.SetBool("Grounded", false);
+        animator.SetBool("Grounded", false);
     }
 
     public void ResetStateWait(GameObject gameObject, State newState)

@@ -104,6 +104,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5980186825115005193}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 004d939687dc6db408f7d332814f2291,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1352638683035690208}
   m_SourcePrefab: {fileID: 100100000, guid: 004d939687dc6db408f7d332814f2291, type: 3}
 --- !u!1 &8214361142767666371 stripped
 GameObject:
@@ -168,6 +172,19 @@ MonoBehaviour:
   activeHitBoxes: []
   rb: {fileID: 8577615183171368556}
   slimeBallAttack: {fileID: 11400000, guid: 15aa55c3e1d7e7c47a42c9b9c469627f, type: 2}
+--- !u!114 &-1352638683035690208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8214361142767666371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69425703a6d2596449cc73f5476c16cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: 10
 --- !u!4 &8841856193115725433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 004d939687dc6db408f7d332814f2291,

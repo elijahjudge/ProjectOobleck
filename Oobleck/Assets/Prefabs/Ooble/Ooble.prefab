@@ -1371,7 +1371,7 @@ MonoBehaviour:
       springDamper: 0
     simulateGravity: 1
     stateGravity: 10
-    enterAnimation: 
+    enterAnimation: Hurt
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -1450,7 +1450,7 @@ MonoBehaviour:
       springDamper: 0
     simulateGravity: 0
     stateGravity: 0
-    enterAnimation: 
+    enterAnimation: Spawn
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -1542,7 +1542,7 @@ MonoBehaviour:
       springDamper: 0
     simulateGravity: 1
     stateGravity: 60
-    enterAnimation: Idle
+    enterAnimation: Struggle
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -1713,7 +1713,7 @@ MonoBehaviour:
       springDamper: 0
     simulateGravity: 0
     stateGravity: 0
-    enterAnimation: 
+    enterAnimation: Spawn
     effects:
       effectsOnStart: []
       effectsOnExit: []
@@ -1849,7 +1849,7 @@ MonoBehaviour:
       springDamper: 0
     simulateGravity: 0
     stateGravity: 0
-    enterAnimation: 
+    enterAnimation: Hurt
     effects:
       effectsOnStart:
       - particleEffect: {fileID: 11400000, guid: 5b8e340398939f54e9077cb027a6f472,
