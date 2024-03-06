@@ -23,7 +23,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Teeth
-    second: {fileID: 2504516506940294678, guid: 74c0e61521082f943ab3464e29e475c2,
+    second: {fileID: 2504516506940294678, guid: b904f6bd50ad8f3469d7531f74655844,
       type: 3}
   materials:
     materialImportMode: 2

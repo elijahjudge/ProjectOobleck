@@ -68,7 +68,7 @@ public class ManagerHits : MonoBehaviour
 
         CompleteAllTickets();
 
-        yield return new WaitForSeconds(1f / 60f);
+        //yield return new WaitForSeconds(1f / 60f);
 
 
         foreach (HitTicket ticket in hitTickets)

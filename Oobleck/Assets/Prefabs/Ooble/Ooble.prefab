@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 8588476487900192263}
   - component: {fileID: 3728077746350005152}
   - component: {fileID: 202762270469021159}
+  - component: {fileID: 8757690720111389603}
   m_Layer: 3
   m_Name: Ooble
   m_TagString: Untagged
@@ -555,6 +556,7 @@ MonoBehaviour:
   ooble_InAlligatorMouth: {fileID: 3728077746350005152}
   deathState: {fileID: 8588476487900192263}
   sharkMouthState: {fileID: 202762270469021159}
+  slimeBalledState: {fileID: 8757690720111389603}
   rb: {fileID: 0}
   input: {fileID: 0}
   animator: {fileID: 0}
@@ -1724,6 +1726,145 @@ MonoBehaviour:
   sharksMouth: {fileID: 0}
   sharkMouthPosition: {x: 0, y: -1.2, z: 2}
   sharkMouthRotation: {x: 122, y: -6, z: 3}
+--- !u!114 &8757690720111389603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089249728048871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da8a9f6cec1b8b4da281412a317e155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCState: {fileID: 0}
+  startState:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  timeEnteredCharacterState: 0
+  slimed:
+    duration: 60
+    useCustomMovementLogic: 1
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 1
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 1
+    stateGravity: 60
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+    hitForce: 20
+    torqueForce: 1
+  hitStop:
+    duration: 2
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 3
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart:
+      - particleEffect: {fileID: 11400000, guid: 5b8e340398939f54e9077cb027a6f472,
+          type: 2}
+        transformOverride: {fileID: 0}
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+    hurtMaterial: {fileID: 2100000, guid: 6d25c2bd748de824e97fef822a06c0f0, type: 2}
+    flashDuration: 0.15
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &8936278156448485696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1899,7 +2040,31 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 434617707303870571}
+    - targetCorrespondingSourceObject: {fileID: 4249754490941455572, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4086408293425829736}
   m_SourcePrefab: {fileID: 100100000, guid: edaa3f7327ded324497d4b4ab7e3f051, type: 3}
+--- !u!1 &5115562040158481812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4249754490941455572, guid: edaa3f7327ded324497d4b4ab7e3f051,
+    type: 3}
+  m_PrefabInstance: {fileID: 8936278156448485696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4086408293425829736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115562040158481812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e43eaf0fe3bde44e85e2e7419fcbf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 9129015266279179208}
 --- !u!1 &8126007149382659089 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: edaa3f7327ded324497d4b4ab7e3f051,
@@ -2043,6 +2208,12 @@ MonoBehaviour:
 --- !u!4 &8903247982892988075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: edaa3f7327ded324497d4b4ab7e3f051,
+    type: 3}
+  m_PrefabInstance: {fileID: 8936278156448485696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &9129015266279179208 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 195007901989966472, guid: edaa3f7327ded324497d4b4ab7e3f051,
     type: 3}
   m_PrefabInstance: {fileID: 8936278156448485696}
   m_PrefabAsset: {fileID: 0}

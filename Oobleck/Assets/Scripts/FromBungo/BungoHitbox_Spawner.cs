@@ -43,7 +43,7 @@ public class BungoHitbox_Spawner : MonoBehaviour
         
     }
 
-    private void ClearAllHitBoxes()
+    public void ClearAllHitBoxes()
     {
         int length = activeHitBoxes.Count;
 
@@ -55,7 +55,15 @@ public class BungoHitbox_Spawner : MonoBehaviour
         activeHitBoxes.Clear();
     }
 
+    private void OnDestroy()
+    {
+        ClearAllHitBoxes();
+    }
 
+    private void OnDisable()
+    {
+        ClearAllHitBoxes();
+    }
     public virtual void HitResponse(BungoHitBox attack, HitResponder hitResponder, Vector3 hitPosition)
     {
         

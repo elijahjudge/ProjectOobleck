@@ -421,18 +421,36 @@ public class EnemyAttackSubstate : EnemySubState
 {
     [Header("Attack")]
     public BungoAttackInfo attack;
+    public int attackStartFrame;
+    private bool calledOnAttack;
 
     private List<BungoHitChecker> hitChecker = new List<BungoHitChecker>();
     public override void OnEnter()
     {
+        calledOnAttack = false;
         base.OnEnter();
-        hitChecker = eState.mEState.hitSpawner.StartAttack(attack);
-        //spawn attack
+
+        if (attack != null)
+        {
+            hitChecker = eState.mEState.hitSpawner.StartAttack(attack);
+        }
+
     }
 
     public override void OnTick()
     {
         base.OnTick();
+
+        if(GetTimeInState() >= attackStartFrame.ConvertFramesToSeconds() && !calledOnAttack)
+        {
+            calledOnAttack = true;
+            OnAttackStartFrame();
+        }
+    }
+
+    public virtual void OnAttackStartFrame()
+    {
+
     }
     public override void OnExit()
     {

@@ -182,6 +182,14 @@ public class BungoHitChecker : MonoBehaviour
     private void OnDestroy()
     {
         StopAllCoroutines();
+        ManagerHits.instance.RemoveToBeDrawn(hitboxGizmo);
+        hitSpawner.activeHitBoxes.Remove(this);
+    }
+
+    private void OnDisable()
+    {
+        ManagerHits.instance.RemoveToBeDrawn(hitboxGizmo);
+        hitSpawner.activeHitBoxes.Remove(this);
     }
     private LineSegment FindShortestLineBetweenSkewLines(LineSegment a, LineSegment b)
     {
