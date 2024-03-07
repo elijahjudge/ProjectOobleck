@@ -4,7 +4,7 @@ public class ClampWithinBounds : MonoBehaviour
 {
     [SerializeField] Bounds bounds;
     public bool storeBoundCenterOffsetToPosition;
-
+    public bool drawGizmos;
     private void Start()
     {
         if(storeBoundCenterOffsetToPosition)
@@ -20,6 +20,9 @@ public class ClampWithinBounds : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (!drawGizmos)
+            return;
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(bounds.center, bounds.size);
     }
