@@ -7,7 +7,7 @@ public class CharacterTarget : MonoBehaviour
     [SerializeField] private float smoothing = 10f;
     [SerializeField] private float timeCameraTakesToGetBackToRespawnPosition = 2f;
 
-    [SerializeField] private float height = 0f;
+    [SerializeField] private float height = 1f;
 
     public ManagerCharacterState target;
 
