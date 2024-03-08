@@ -3,7 +3,12 @@ guid: b8ce6eca36158cf4e9273c0d4974a402
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Challenge1_Albedo
+    second: {fileID: 2100000, guid: 7fefd574b6ad57741a33f7f6d12c558f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
