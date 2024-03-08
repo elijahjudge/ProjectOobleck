@@ -6,7 +6,7 @@ public class CharacterTarget : MonoBehaviour
 {
     [SerializeField] private float smoothing = 10f;
     [SerializeField] private float timeCameraTakesToGetBackToRespawnPosition = 2f;
-
+    public float heightOffset;
     [SerializeField] private float height = 1f;
 
     public ManagerCharacterState target;
@@ -38,7 +38,7 @@ public class CharacterTarget : MonoBehaviour
         
 
         transform.position = Vector3.Lerp(transform.position, 
-            new Vector3(target.transform.position.x,height,target.transform.position.z),
+            new Vector3(target.transform.position.x,height + heightOffset,target.transform.position.z),
             Time.deltaTime * smoothing);
     }
 
