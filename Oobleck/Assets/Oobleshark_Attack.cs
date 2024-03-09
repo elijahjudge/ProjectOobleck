@@ -82,19 +82,40 @@ public class Oobleshark_Attack_CirclePlayer : EnemySubState
     public Transform sharkCircleTransform;
     private Transform playerTransform;
 
-    public Vector2 attackWaitRange;
+    public Vector2 attackWaitIslandRange;
+    public Vector2 attackWaitOobleckRange;
+
+    private float waitBeforeAttackIsland;
+    private float waitBeforeAttackOobleck;
 
     private float waitBeforeAttack;
 
+    public ManagerCharacterState characterState;
     public override void OnEnter()
     {
         playerTransform = eState.mEState.player;
         eState.mEState.player = sharkCircleTransform;
 
-        waitBeforeAttack = Random.Range(attackWaitRange.x, attackWaitRange.y);
+        waitBeforeAttackIsland = Random.Range(attackWaitIslandRange.x, attackWaitIslandRange.y);
+        waitBeforeAttackOobleck = Random.Range(attackWaitOobleckRange.x, attackWaitOobleckRange.y);
+
+        waitBeforeAttack = waitBeforeAttackOobleck;
         base.OnEnter();
     }
 
+    public override void OnTick()
+    {
+        base.OnTick();
+
+        if(characterState.IsTouchingOobleck())
+        {
+            waitBeforeAttack = waitBeforeAttackOobleck;
+        }
+        else
+        {
+            waitBeforeAttack = waitBeforeAttackIsland;
+        }
+    }
     public bool AttackPlayer()
     {
         return StateDurationOver(eState.subHSM) && GetTimeInState() > waitBeforeAttack;
@@ -159,7 +180,7 @@ public class Oobleshark_HideUnderNavMesh : EnemySubState
     public override void OnEnter()
     {
         base.OnEnter();
-        eState.transform.position = new Vector3(eState.transform.position.x,-10f, eState.transform.position.z);
+        eState.transform.position = new Vector3(eState.transform.position.x,-25f, eState.transform.position.z);
     }
     public override void OnExit()
     {

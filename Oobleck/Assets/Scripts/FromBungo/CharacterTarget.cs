@@ -53,6 +53,7 @@ public class CharacterTarget : MonoBehaviour
     }
     IEnumerator GetToRespawnPoint()
     {
+
         float t = 0;
         float x = 0f;
         Vector3 startPosition = transform.position;
@@ -65,6 +66,8 @@ public class CharacterTarget : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition, target.spawnPosition.spawnPosition, x);
             yield return null;
         }
+
+        height = target.spawnPosition.spawnPosition.y;
 
         gettingToRespawnPoint = null;
     }

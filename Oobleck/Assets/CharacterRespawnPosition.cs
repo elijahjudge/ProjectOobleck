@@ -10,7 +10,7 @@ public class CharacterRespawnPosition : MonoBehaviour
     {
         CheckPoint.checkPointTouched += UpdateRespawnPosition;
     }
-    public void UpdateRespawnPosition(Vector3 newPosition)
+    public void UpdateRespawnPosition(Vector3 newPosition, int checkPoint)
     {
         spawnPosition = newPosition;
     }

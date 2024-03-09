@@ -212,7 +212,11 @@ public class GroundRider : MonoBehaviour
                 rayColorDebug = Color.green;
                 grounded = true;
 
-                if (hit.transform.gameObject.layer == oobleckLayer)
+                if (hit.transform.gameObject.layer != oobleckLayer)
+                {
+                    touchingOobleck = false;
+                }
+                else
                 {
                     touchingOobleck = true;
 
@@ -227,10 +231,7 @@ public class GroundRider : MonoBehaviour
                         oobleckParticlePosition = transform;
                     }
                 }
-                else
-                {
-                    touchingOobleck = false;
-                }
+                
             }
             
         }

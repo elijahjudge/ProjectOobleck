@@ -9,17 +9,30 @@ public class OobleckCameraManager : MonoBehaviour
 
     public int indexCurrentCamera;
 
-    private void Start()
+    // so the color of the render cameras can update
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(1f / 60f);
+
         UseCamera(indexCurrentCamera);
+        CheckPoint.checkPointTouched += TouchedCheckPoint;
+            
+        
     }
     public void UseCamera(int index)
     {
+        indexCurrentCamera = index;
+
         foreach(var cam in oobleckRenderCameras)
         {
-                cam.transform.root.gameObject.SetActive(false);
+                cam.transform.gameObject.SetActive(false);
         }
 
-        oobleckRenderCameras[index].transform.root.gameObject.SetActive(true);
+        oobleckRenderCameras[index].transform.gameObject.SetActive(true);
+    }
+
+    public void  TouchedCheckPoint(Vector3 position, int checkPoint)
+    {
+        UseCamera(checkPoint);
     }
 }

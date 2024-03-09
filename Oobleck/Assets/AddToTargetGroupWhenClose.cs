@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AddToTargetGroupWhenClose : MonoBehaviour
@@ -43,13 +44,13 @@ public class AddToTargetGroupWhenClose : MonoBehaviour
 
     public void AddToTargetGroup()
     {
-        if (targetGroup.FindMember(transform) == -1 && fadingIn == null)
+        if (targetGroup.FindMember(transform) == -1 && fadingIn == null && fadingOut == null)
             fadingIn = StartCoroutine(FadeCameraIn(fadeInDuration));              
     }
 
     public void RemoveFromTargetGroup()
     {
-        if (targetGroup.FindMember(transform) != -1 && fadingOut == null)
+        if (targetGroup.FindMember(transform) != -1 && fadingOut == null && fadingIn == null)
             fadingOut = StartCoroutine(FadeCameraOut(fadeInDuration));
     }
 
@@ -67,7 +68,9 @@ public class AddToTargetGroupWhenClose : MonoBehaviour
             x = t / duration;
             t += Time.deltaTime;
 
-            targetGroup.m_Targets[targetIndex].weight = targetFadeIn.Evaluate(x) * targetWeight;
+            if(targetGroup.m_Targets.Length > targetIndex)
+                targetGroup.m_Targets[targetIndex].weight = targetFadeIn.Evaluate(x) * targetWeight;
+
             yield return null;
         }
 
@@ -79,6 +82,9 @@ public class AddToTargetGroupWhenClose : MonoBehaviour
         timeTargetRemoved = Time.time;
         targetIndex = targetGroup.FindMember(transform);
 
+        if (targetIndex == -1)
+            yield break;
+
         float t = 0f;
         float x = 0f;
 
@@ -87,7 +93,8 @@ public class AddToTargetGroupWhenClose : MonoBehaviour
             x = t / duration;
             t += Time.deltaTime;
 
-            targetGroup.m_Targets[targetIndex].weight = targetFadeOut.Evaluate(x) * targetWeight;
+            if (targetGroup.m_Targets.Length > targetIndex)
+                targetGroup.m_Targets[targetIndex].weight = targetFadeOut.Evaluate(x) * targetWeight;
             yield return null;
         }
 

@@ -12,7 +12,7 @@ public class CameraRotationCart : MonoBehaviour
     private float pathPos;
     private void FixedUpdate()
     {
-        pathPos = path.FindClosestPoint(cameraTarget.position, 0, 10, 10);
+        pathPos = path.FindClosestPoint(cameraTarget.position, 0, 100, 10);
 
         transform.position = path.EvaluatePosition(pathPos);
 

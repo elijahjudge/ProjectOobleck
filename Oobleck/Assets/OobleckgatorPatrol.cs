@@ -8,13 +8,11 @@ public class OobleckgatorPatrol : EnemyState
     [SerializeField] public OobleckgatorPatrol_Chill chill;
     [SerializeField] public OobleckgatorPatrol_GoToNewSpot goToNewSpot;
 
+    public ManagerCharacterState characterState;
     public float distanceInRange;
     public bool touchingOobleck;
     public void Awake()
     {
-        GroundRider.characterTouchedOobleck += PlayerTouchingOobleck;
-        GroundRider.characterLeftOobleck += PlayerLeftOobleck;
-
         stateConnections = new List<StateConnection>()
         {
             new StateConnection(mEState.aggroState,() => touchingOobleck && PlayerInRange())
@@ -35,16 +33,9 @@ public class OobleckgatorPatrol : EnemyState
 
     public override void OnTick()
     {
+        touchingOobleck = characterState.IsTouchingOobleck();
         base.OnTick();
-    }
 
-    public void PlayerTouchingOobleck()
-    {
-        touchingOobleck = true;
-    }
-    public void PlayerLeftOobleck()
-    {
-        touchingOobleck = false;
     }
 
     public bool PlayerInRange()

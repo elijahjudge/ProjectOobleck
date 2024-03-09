@@ -16,7 +16,7 @@ public class Ooble_Movement : CharacterState
         stateConnections = new List<StateConnection>() 
         { 
             new StateConnection(mCState.jump,() => mCState.input.FrameAllowanceSouthButton(4,true)
-            && Time.time - timeEnteredCharacterState > 0f),
+            && Time.time - timeEnteredCharacterState > 0f && (subHSM.currentState != staminaRecharging)),
             new StateConnection(mCState.oobleckMovement,() => mCState.groundRider.touchingOobleck &&
             (subHSM.currentState != staminaRecharging))
 

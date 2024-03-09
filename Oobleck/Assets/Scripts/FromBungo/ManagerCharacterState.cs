@@ -107,4 +107,9 @@ public class ManagerCharacterState : MonoBehaviour
             PlayerDie();
         }
     }
+
+    public bool IsTouchingOobleck()
+    {
+        return (HSM.currentState.Equals(oobleckJump) || HSM.currentState.Equals(oobleckMovement));
+    }
 }

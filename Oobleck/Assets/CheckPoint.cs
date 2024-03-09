@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    public int checkPoint;
     public Bounds bounds;
     public bool drawGizmos;
 
     public Transform player;
     public Transform mySpawnPosition;
-
-    public delegate void CheckpointEvent(Vector3 positiion);
+    public delegate void CheckpointEvent(Vector3 position,int checkPoint);
 
     public static CheckpointEvent checkPointTouched;
 
@@ -22,7 +22,7 @@ public class CheckPoint : MonoBehaviour
     {
         if(bounds.Contains(player.position))
         {
-            checkPointTouched?.Invoke(mySpawnPosition.position);
+            checkPointTouched?.Invoke(mySpawnPosition.position,checkPoint);
         }
     }
 
