@@ -6,7 +6,7 @@ public class Ooble_InAlligatorMouth : CharacterState
 {
     [Header("Sub States")]
     [SerializeField] public Ooble_InAlligatorMouth_SS inAlligatorMouth;
-
+    public float timeReleased;
     public override void Awake()
     {
         base.Awake();
@@ -36,5 +36,11 @@ public class Ooble_InAlligatorMouth_SS : CharacterSubState
         //cState.mCState.rb.angularVelocity = Vector3.zero;
         cState.mCState.stamina.LoseStaminaChompHold();
 
+    }
+
+    public override void OnExit()
+    {
+        cState.mCState.ooble_InAlligatorMouth.timeReleased = Time.time;
+        base.OnExit();       
     }
 }

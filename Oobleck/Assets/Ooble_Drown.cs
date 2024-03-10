@@ -59,7 +59,7 @@ public class DeathState_Respawn : CharacterSubState
     {
         base.OnEnter();
         cState.transform.position = cState.mCState.spawnPosition.spawnPosition;
-        cState.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        cState.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.forward, Vector3.up);
         cState.transform.localScale = Vector3.one;
     }
 
@@ -68,6 +68,7 @@ public class DeathState_Respawn : CharacterSubState
         base.OnExit();
         cState.mCState.stamina.ResetStamina();
         cState.mCState.rb.isKinematic = false;
+        cState.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.forward, Vector3.up);
 
     }
 }
@@ -81,12 +82,13 @@ public class Ooble_HideUnderSpawnPosition : CharacterSubState
         cState.mCState.rb.velocity = Vector3.zero;
         cState.mCState.rb.isKinematic = true;
         cState.mCState.stamina.ResetStamina();
-        Vector3 underSpawn = new Vector3(cState.mCState.spawnPosition.spawnPosition.x, -10f, cState.mCState.spawnPosition.spawnPosition.z);
+        Vector3 underSpawn = new Vector3(cState.mCState.spawnPosition.spawnPosition.x, -100f, cState.mCState.spawnPosition.spawnPosition.z);
         cState.transform.position = underSpawn;
     }
 
     public override void OnExit()
     {
         base.OnExit();
+
     }
 }

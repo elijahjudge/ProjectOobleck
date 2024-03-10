@@ -11,12 +11,17 @@ public class Ooblegator_Chomp_Hold : EnemyState
 
     public Oobleckgator_Attack aggroState;
     public Collider physicalCollider;
+
+    private float hitTime;
     public void Awake()
     {
+        Ooble_SlimeBalled.hitWithSlime += PlayerHitWithSlime;
 
         stateConnections = new List<StateConnection>()
         {
-            new StateConnection(mEState.aggroState, () => postChompClarity.StateDurationOver(subHSM), aggroState.chasing)
+            new StateConnection(mEState.aggroState, () => postChompClarity.StateDurationOver(subHSM), aggroState.chasing),
+            new StateConnection(mEState.aggroState, SlimeHitInterrupt, aggroState.chasing)
+
         };
 
         chompHold.InitializeAsStartState(this, new List<StateConnection>() {
@@ -39,6 +44,16 @@ public class Ooblegator_Chomp_Hold : EnemyState
         physicalCollider.enabled = true;
 
         base.OnExit();
+    }
+
+    public void PlayerHitWithSlime()
+    {
+        hitTime = Time.time;
+    }
+
+    public bool SlimeHitInterrupt()
+    {
+        return (Time.time - hitTime) <= .5f;
     }
 }
 

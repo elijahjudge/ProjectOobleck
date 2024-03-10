@@ -1,20 +1,28 @@
+using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CharacterTarget : MonoBehaviour
 {
     [SerializeField] private float smoothing = 10f;
     [SerializeField] private float timeCameraTakesToGetBackToRespawnPosition = 2f;
+    [SerializeField] private AnimationCurve backToSpawnXZAnimation;
+    [SerializeField] private AnimationCurve backToSpawnYAnimation;
+
     public float heightOffset;
     [SerializeField] private float height = 1f;
-
+    [SerializeField] private float respawnAnimationHeight;
     public ManagerCharacterState target;
 
     public delegate void CharacterTargetAdded(Transform transform);
     public static CharacterTargetAdded targetAdded;
 
     private Coroutine gettingToRespawnPoint;
+    public Animator stateCamera;
+
     private void Awake()
     {
         GroundRider.characterTouchedGround += AdjustPlayerHeight;
@@ -26,6 +34,7 @@ public class CharacterTarget : MonoBehaviour
     {
         ManagerCharacterState.playerDied += PlayerDied;
         targetAdded?.Invoke(transform);
+
     }
 
     private void FixedUpdate()
@@ -53,23 +62,46 @@ public class CharacterTarget : MonoBehaviour
     }
     IEnumerator GetToRespawnPoint()
     {
+        stateCamera.Play("Respawning");
 
         float t = 0;
-        float x = 0f;
+        float lerpPos = 0f;
         Vector3 startPosition = transform.position;
 
-        while(t < timeCameraTakesToGetBackToRespawnPosition)
+        Vector3 aboveDeathPoint = new Vector3(startPosition.x,
+            target.spawnPosition.spawnPosition.y,
+            startPosition.z);
+
+        while (t < .75f)
         {
-            x = t / timeCameraTakesToGetBackToRespawnPosition;
+            lerpPos = t / timeCameraTakesToGetBackToRespawnPosition;
             t += Time.deltaTime;
 
-            transform.position = Vector3.Lerp(startPosition, target.spawnPosition.spawnPosition, x);
+            transform.position = Vector3.Lerp(startPosition,aboveDeathPoint,lerpPos);
+            yield return null;
+        }
+
+        t = 0;
+        lerpPos = 0f;
+
+        while (t < timeCameraTakesToGetBackToRespawnPosition)
+        {
+            lerpPos = t / timeCameraTakesToGetBackToRespawnPosition;
+            t += Time.deltaTime;
+
+            float x = Mathf.Lerp(startPosition.x, target.spawnPosition.spawnPosition.x, backToSpawnXZAnimation.Evaluate(lerpPos));
+            float z = Mathf.Lerp(startPosition.z, target.spawnPosition.spawnPosition.z, backToSpawnXZAnimation.Evaluate(lerpPos));
+            float y = Mathf.Lerp(target.spawnPosition.spawnPosition.y, target.spawnPosition.spawnPosition.y + respawnAnimationHeight, backToSpawnYAnimation.Evaluate(lerpPos));
+
+            transform.position = new Vector3 (x, y, z);
             yield return null;
         }
 
         height = target.spawnPosition.spawnPosition.y;
 
         gettingToRespawnPoint = null;
+
+        stateCamera.Play("Default");
     }
 
 }

@@ -9,6 +9,9 @@ public class Ooble_SlimeBalled : CharacterState
     [SerializeField] public Ooble_HitStop hitStop;
 
     public Vector3 direction;
+
+    public delegate void HitWithSlime();
+    public static HitWithSlime hitWithSlime;
     public void InitializeSlimeBall(Vector3 direction, BungoHitbox_Spawner slimeBall)
     {
         this.direction = direction;
@@ -31,6 +34,12 @@ public class Ooble_SlimeBalled : CharacterState
 
 
         subHSM = new HierarchicalStateMachine(startState);
+    }
+
+    public override void OnEnter()
+    {
+        hitWithSlime?.Invoke();
+        base.OnEnter();
     }
 }
 
