@@ -28,7 +28,9 @@ public class Slime_Aggro : EnemyState
 
         spitAtPlayer.Initialize(this, new List<StateConnection>()
         {
-            new StateConnection(lookAtPlayerSpitefully,()=> spitAtPlayer.StateDurationOver(subHSM))
+            new StateConnection(lookAtPlayerSpitefully,()=> spitAtPlayer.StateDurationOver(subHSM)),
+            new StateConnection(happyYourInOobleck,() => mCState.HSM.currentState is Oobleck_Movement)
+
         });
 
         happyYourInOobleck.Initialize(this, new List<StateConnection>()
@@ -47,7 +49,8 @@ public class Slime_Aggro : EnemyState
 
     public bool PlayerOutOfRange()
     {
-        return Vector3.Distance(transform.position, mEState.player.position) > distanceBeforeOutOfRange;
+        return Vector3.Distance(transform.position, mEState.player.position) > distanceBeforeOutOfRange &&
+            subHSM.currentState != spitAtPlayer;
     }
 }
 
