@@ -8,6 +8,7 @@ public class ManagerCharacterState : MonoBehaviour
     public int characterNumber;
     public HierarchicalStateMachine HSM { get; private set; }
 
+    public bool usePurpleSlimeEffects;
 
     [Header("Grounded")]
     public CharacterState groundMovement;
@@ -33,7 +34,7 @@ public class ManagerCharacterState : MonoBehaviour
 
     public CharacterVariables CV;
     private CharacterState startingState;
-
+    
     public delegate void CharacterAdded(ManagerCharacterState character, int index);
     public static CharacterAdded playerAdded;
     public static CharacterAdded npcAdded;

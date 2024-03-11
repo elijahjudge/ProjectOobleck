@@ -56,6 +56,7 @@ public class CharacterTarget : MonoBehaviour
         height = target.transform.position.y;
     }
 
+
     public void PlayerDied()
     {
         gettingToRespawnPoint = StartCoroutine(GetToRespawnPoint());

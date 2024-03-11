@@ -20,7 +20,7 @@ public class OobleHitResponder : HitResponder
             case BungoHitBox.HitBoxType.OobleckSlime:
                 Vector3 direction = (-hitPosition + mCState.transform.position).normalized;
                 direction = new Vector3(direction.x,.45f,direction.z);
-                mCState.slimeBalledState.InitializeSlimeBall(direction,hitSpawnerResponder);
+                mCState.slimeBalledState.InitializeSlimeBall(direction,hitSpawnerResponder, attack.stats.damage);
                 //mCState.transform.position = (mCState.transform.position + (hitPosition + (Vector3.down * 2f)))/2f;
                 mCState.HSM.ChangeState(mCState.slimeBalledState);
                 break;

@@ -19,6 +19,16 @@ public class TargetGroup : MonoBehaviour
         targetGroup.AddMember(transform, 1, 2f);
     }
 
+    public void AddTransform(Transform transform, float weight)
+    {
+        targetGroup.AddMember(transform, weight, 5f);
+
+    }
+
+    public void RemoveTransform(Transform transform)
+    {
+        targetGroup.RemoveMember(transform);
+    }
 
     public void FadePlayerForRespawn(float duration)
     {

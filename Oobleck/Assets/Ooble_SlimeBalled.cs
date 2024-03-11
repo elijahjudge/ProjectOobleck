@@ -9,12 +9,14 @@ public class Ooble_SlimeBalled : CharacterState
     [SerializeField] public Ooble_HitStop hitStop;
 
     public Vector3 direction;
+    public float hitForce;
 
     public delegate void HitWithSlime();
     public static HitWithSlime hitWithSlime;
-    public void InitializeSlimeBall(Vector3 direction, BungoHitbox_Spawner slimeBall)
+    public void InitializeSlimeBall(Vector3 direction, BungoHitbox_Spawner slimeBall, float hitForce)
     {
         this.direction = direction;
+        this.hitForce = hitForce;
         Destroy(slimeBall.gameObject, hitStop.duration.ConvertFramesToSeconds());
     }
     public override void Awake()
@@ -46,13 +48,12 @@ public class Ooble_SlimeBalled : CharacterState
 [System.Serializable]
 public class Ooble_SlimeBalled_SS : CharacterSubState
 {
-    public float hitForce;
     public float torqueForce;
     public override void OnEnter()
     {
         base.OnEnter();
 
-        cState.mCState.rb.AddForce(cState.mCState.slimeBalledState.direction * hitForce, ForceMode.Impulse);
+        cState.mCState.rb.AddForce(cState.mCState.slimeBalledState.direction * (cState as Ooble_SlimeBalled).hitForce, ForceMode.Impulse);
         cState.mCState.rb.AddTorque(cState.mCState.slimeBalledState.direction * torqueForce, ForceMode.Impulse);
 
     }
