@@ -10,6 +10,9 @@ public class ManagerCharacterState : MonoBehaviour
 
     public bool usePurpleSlimeEffects;
 
+    [Header("For Cutscenes")]
+    public Ooble_WaitForHatch waitForHatch;
+
     [Header("Grounded")]
     public CharacterState groundMovement;
     public CharacterState jump;
@@ -50,17 +53,19 @@ public class ManagerCharacterState : MonoBehaviour
     {
         InitializeAllCharacterStates();
         GetAllReferences();
-        startingState = groundMovement;
+        startingState = waitForHatch;
         HSM = new HierarchicalStateMachine(startingState);
 
         input.AssignInput(GetComponent<PlayerInput>());
         input.myPlayer.currentActionMap = input.myPlayer.actions.FindActionMap("Player");
 
         CharacterStamina.playerDrowned += PlayerDie;
+        Egg.hatched += Hatch;
     }
 
     private void InitializeAllCharacterStates()
     {
+        waitForHatch.Initialize(this);
         groundMovement.Initialize(this);
         jump.Initialize(this);
         oobleckMovement.Initialize(this);
@@ -82,9 +87,11 @@ public class ManagerCharacterState : MonoBehaviour
         gravity = GetComponent<BungoGravity>();
         stamina = GetComponent<CharacterStamina>();
         spawnPosition = GetComponent<CharacterRespawnPosition>();
+        
     }
     private void Start()
     {
+        waitForHatch.OnEnter();
         stateChanged?.Invoke(gameObject, startingState);      
     }
     private void FixedUpdate()
@@ -112,5 +119,10 @@ public class ManagerCharacterState : MonoBehaviour
     public bool IsTouchingOobleck()
     {
         return (HSM.currentState.Equals(oobleckJump) || HSM.currentState.Equals(oobleckMovement));
+    }
+
+    public void Hatch()
+    {
+        HSM.ChangeState(jump);
     }
 }

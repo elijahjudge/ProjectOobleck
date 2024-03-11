@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Cinemachine;
+using System;
 using UnityEngine;
 public class GS_Intro : GameState
 {
+    public CinemachineVirtualCamera VirtualCamera;
     public float introDuration;
 
     public override void OnStart()
     {
         base.OnStart();
-
-        mCState.input.OverrideAllInput(true);
     }
     public override void TickGameState()
     {
@@ -24,9 +24,6 @@ public class GS_Intro : GameState
     public override void OnExit()
     {
         base.OnExit();
-
-        mCState.input.OverrideAllInput(false);
-
     }
 }
 
