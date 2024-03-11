@@ -20,7 +20,7 @@ AnimatorStateMachine:
     m_Position: {x: 625.5197, y: 14.520966, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8009396392085108271}
-    m_Position: {x: 336.9803, y: -149.65222, z: 0}
+    m_Position: {x: 340, y: -150, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -105,28 +105,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1101 &2231791027126269406
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 4641425389493087762}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 5
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 1
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!1102 &4641425389493087762
 AnimatorState:
   serializedVersion: 6
@@ -163,8 +141,7 @@ AnimatorState:
   m_Name: StartCutscene
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 2231791027126269406}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0

@@ -36,7 +36,8 @@ public class Egg : MonoBehaviour
         if(input.FrameAllowanceSouthButton(5,true) ||
             input.FrameAllowanceEastButton(5, true) ||
         input.FrameAllowanceNorthButton(5, true) ||
-        input.FrameAllowanceWestButton(5, true))
+        input.FrameAllowanceWestButton(5, true) ||
+        input.FlickedLeftJoystick())
         {
             TryShaking();
         }
@@ -64,6 +65,7 @@ public class Egg : MonoBehaviour
     {
         if(shakeCount >= shakesBeforeHatch)
         {
+            input.OverrideAllInput(1f);
             hatched?.Invoke();
             ManagerParticleEffects.instance.Play(hatchEffect, transform);
 

@@ -41,7 +41,6 @@ public class EditorParticleEffects : Editor
         AssetDatabase.Refresh();
 
         DestroyImmediate(tempGo);
-        Debug.Log("did u win?");
 
         return newParticleEffectObject;
     }

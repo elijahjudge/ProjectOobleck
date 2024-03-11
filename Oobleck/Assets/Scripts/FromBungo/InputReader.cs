@@ -140,7 +140,7 @@ public class InputReader : MonoBehaviour
     private float joystickLeftTimeFlicked;
     public void ReadJoystickLeft(InputAction.CallbackContext ctx)
     {
-        
+
         joystickLeft = Vector2.ClampMagnitude(ctx.ReadValue<Vector2>(), 1f);
        
         // Check if the joystick value has changed quickly
@@ -162,6 +162,11 @@ public class InputReader : MonoBehaviour
             timeJoystickLeftCanceled = Time.time;
         }
   
+    }
+
+    public bool FlickedLeftJoystick()
+    {
+        return Time.time - joystickLeftTimeFlicked < .1f && !overrideJoystickLeft;
     }
 
     /*private bool leftSmash;
