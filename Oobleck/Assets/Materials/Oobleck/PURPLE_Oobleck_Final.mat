@@ -137,7 +137,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSecondary: {r: 0.9606693, g: 0.5424528, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0.63875717, g: 0.2980393, b: 0.972549, a: 0}
+    - _MainColor: {r: 0.53344667, g: 0, b: 0.8867924, a: 0}
     - _Remap2: {r: -0.1, g: 0.1, b: 0, a: 0}
     - _RemapScrollingNoise: {r: -0.11, g: 2.1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
