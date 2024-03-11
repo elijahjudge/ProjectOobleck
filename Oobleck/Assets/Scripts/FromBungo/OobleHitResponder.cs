@@ -3,6 +3,8 @@
 public class OobleHitResponder : HitResponder
 {
     [SerializeField] private ManagerCharacterState mCState;
+    public float minimumTimeBetweenAllowingGatorBite;
+    private float lastTimeInGatorMouth;
     public override void Respond(BungoHitBox attack, BungoHitbox_Spawner hitSpawnerResponder, Vector3 hitPosition)
     {
         base.Respond(attack, hitSpawnerResponder, hitPosition);
@@ -12,6 +14,7 @@ public class OobleHitResponder : HitResponder
             case BungoHitBox.HitBoxType.OobleckGator:
                 mCState.HSM.ChangeState(mCState.ooble_InAlligatorMouth);
                 mCState.transform.position = hitPosition;
+                lastTimeInGatorMouth = Time.time;
                 break;
             case BungoHitBox.HitBoxType.OobleckShark:
                 mCState.sharkMouthState.SharkInitialize((hitSpawnerResponder as Oobleshark_Hitbox_Spawner).sharkEatBone, hitPosition);
@@ -27,5 +30,13 @@ public class OobleHitResponder : HitResponder
         }
     }
 
+    public override bool AllowHit(BungoHitBox attack)
+    {
+        if (attack.type == BungoHitBox.HitBoxType.OobleckGator)
+            return (Time.time - lastTimeInGatorMouth) > minimumTimeBetweenAllowingGatorBite;
+        else
+            return base.AllowHit(attack);
+
+    }
 
 }

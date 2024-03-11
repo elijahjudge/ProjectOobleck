@@ -35,7 +35,7 @@ public class Ooble_InAlligatorMouth_SS : CharacterSubState
         //cState.mCState.rb.velocity = Vector3.zero;
         //cState.mCState.rb.angularVelocity = Vector3.zero;
         cState.mCState.stamina.LoseStaminaChompHold();
-
+        cState.mCState.rb.velocity = Vector3.zero;
     }
 
     public override void OnExit()

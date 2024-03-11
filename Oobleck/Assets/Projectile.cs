@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
     private Rigidbody rb;
 
     public Vector3 startTorque;
+
+    public Vector2 aimErrorRange;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -45,10 +47,13 @@ public class Projectile : MonoBehaviour
     }
     public Vector3 GetGoalDestination(Rigidbody rb, Vector3 aimOffset, float afterXXXseconds)
     {
+        float aimError = Random.Range(aimErrorRange.x, aimErrorRange.y);
+        float aimForDuration = afterXXXseconds + aimError;
+
         Vector3 acceleration = Vector3.zero;
         Vector3 goalDestination = (rb.transform.position+aimOffset) +
-            (Vector3.Scale(rb.velocity, new Vector3(1f,0f,1f)) * afterXXXseconds) +
-            (acceleration * .5f * Mathf.Pow(afterXXXseconds, 2f));
+            (Vector3.Scale(rb.velocity, new Vector3(1f,0f,1f)) * aimForDuration) +
+            (acceleration * .5f * Mathf.Pow(aimForDuration, 2f));
 
         return goalDestination;
     }
