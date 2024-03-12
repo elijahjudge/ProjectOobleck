@@ -71,6 +71,7 @@ MonoBehaviour:
   type: 0
   owner: {fileID: 1807506237285845533}
   mCState: {fileID: 8833165464930663957}
+  minimumTimeBetweenAllowingGatorBite: 2.6
 --- !u!1 &5057579345824619602
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +89,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8019716769657319658
 Transform:
   m_ObjectHideFlags: 0
@@ -99,7 +100,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 3.8, z: 0}
-  m_LocalScale: {x: 1.79, y: 1.79, z: 1.79}
+  m_LocalScale: {x: 4.6, y: 4.6, z: 4.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1807506237285845533}
@@ -146,7 +147,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5af0473eb8c5a30499bd7bef3db036bb, type: 3}
-  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
+  m_Color: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5057579345824619602}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd997f1fb8a6b7e4289265a475d79e6d, type: 3}
   m_Name: 
@@ -241,6 +242,7 @@ GameObject:
   - component: {fileID: 3728077746350005152}
   - component: {fileID: 202762270469021159}
   - component: {fileID: 8757690720111389603}
+  - component: {fileID: 4368171707163502049}
   m_Layer: 3
   m_Name: Ooble
   m_TagString: Untagged
@@ -507,7 +509,7 @@ MonoBehaviour:
   rayLength: 1.25
   _groundMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   oobleckLayer: 7
   _rideHeight: 1.15
   _rideSpringStrength: 500
@@ -523,6 +525,8 @@ MonoBehaviour:
   touchingOobleck: 0
   oobleckParticlePosition: {fileID: 0}
   latestGroundHeight: 0
+  foostepsGround: {fileID: 0}
+  foostepsOobleck: {fileID: 0}
 --- !u!114 &8203873624533383477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,6 +553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterNumber: 1
+  usePurpleSlimeEffects: 0
+  waitForHatch: {fileID: 4368171707163502049}
   groundMovement: {fileID: 5520253466155530923}
   jump: {fileID: -4446910204527134064}
   oobleckMovement: {fileID: 2944472760197694493}
@@ -567,6 +573,7 @@ MonoBehaviour:
   stamina: {fileID: 0}
   spawnPosition: {fileID: 0}
   CV: {fileID: 11400000, guid: 91154edb275c0f8428646fe7eda9fb9a, type: 2}
+  startingState: {fileID: 4368171707163502049}
 --- !u!114 &5520253466155530923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,7 +1351,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       valueRange: {x: 1, y: 5}
       timeRange: {x: 0, y: 1}
-  staminaLoss: 1
+  staminaLoss: 2.45
   framesBeforeICanJumpAgain: 40
 --- !u!114 &8588476487900192263
 MonoBehaviour:
@@ -1440,7 +1447,7 @@ MonoBehaviour:
     cState: {fileID: 0}
     physicalCollider: {fileID: 560749370207921096}
   hideUnderSpawn:
-    duration: 120
+    duration: 80
     useCustomMovementLogic: 0
     stateMovement:
       enterVelocity: 0
@@ -1479,7 +1486,7 @@ MonoBehaviour:
       durationalSounds: []
     cState: {fileID: 0}
   respawning:
-    duration: 35
+    duration: 70
     useCustomMovementLogic: 0
     stateMovement:
       enterVelocity: 3
@@ -1612,6 +1619,7 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
+  timeReleased: 0
 --- !u!114 &202762270469021159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1878,7 +1886,6 @@ MonoBehaviour:
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
-    hitForce: 20
     torqueForce: 1
   hitStop:
     duration: 2
@@ -1925,6 +1932,101 @@ MonoBehaviour:
     hurtMaterial: {fileID: 2100000, guid: 6d25c2bd748de824e97fef822a06c0f0, type: 2}
     flashDuration: 0.15
   direction: {x: 0, y: 0, z: 0}
+  hitForce: 0
+--- !u!114 &4368171707163502049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089249728048871412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64808d78deff32145aa26bac841c711f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCState: {fileID: 0}
+  startState:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+  timeEnteredCharacterState: 0
+  waitForHatch:
+    duration: 0
+    useCustomMovementLogic: 0
+    stateMovement:
+      enterVelocity: 0
+      multiplier: 0
+      initialForceImpulse: {x: 0, y: 0, z: 0}
+      movementType: 0
+      movement:
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        valueRange: {x: 0, y: 1}
+      GroundRide: 0
+    useCustomRotationLogic: 0
+    stateRotation:
+      resetAngularVelocity: 0
+      rotateTowardsInput:
+        rotateTowardsDirection: 0
+        allowedRotation: 1
+      rotationType: 0
+      rotationForce: 0
+      springStrength: 0
+      springDamper: 0
+    simulateGravity: 0
+    stateGravity: 0
+    enterAnimation: 
+    effects:
+      effectsOnStart: []
+      effectsOnExit: []
+      durationalEffects: []
+      oobleckDurationEffects: []
+      soundsOnStart: []
+      soundsOnExit: []
+      durationalSounds: []
+    cState: {fileID: 0}
+    hatchPosition: {x: -0.56, y: 1, z: -0.27}
+    waitTime: 5
 --- !u!1001 &8936278156448485696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2100,6 +2202,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 434617707303870571}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: edaa3f7327ded324497d4b4ab7e3f051,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6649497248766136337}
     - targetCorrespondingSourceObject: {fileID: 4249754490941455572, guid: edaa3f7327ded324497d4b4ab7e3f051,
         type: 3}
       insertIndex: -1
@@ -2265,6 +2371,18 @@ MonoBehaviour:
     timeRange: {x: -1, y: 1}
   _rotationSmoothing: 15
   daddy: {fileID: 1807506237285845533}
+--- !u!114 &6649497248766136337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8126007149382659089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64ef5f25036db54297879cc17c59974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8903247982892988075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: edaa3f7327ded324497d4b4ab7e3f051,

@@ -73,15 +73,21 @@ public class ManagerAudio : MonoBehaviour
 
     public AudioSource Play3D(Sound sound, Vector3 position)
     {
+        if(sound.SpacialHolder == null)
+        {
+            Debug.LogWarning("NO 3D Holder on " + sound.name + "You Goon!");
+            return null;
+        }
+
         if (sound.soundVariables.playOrder == SoundVariables.PlayOrder.PlayAllAtSameTime)
         {
             PlayAll(sound, sound.clips);
             return null;
         }
 
-        GameObject soundPlayer = new GameObject(sound.name);
-        soundPlayer.transform.parent = soundEffectHolder.transform;
-        AudioSource source = soundPlayer.AddComponent<AudioSource>();
+        AudioSource source = Instantiate(sound.SpacialHolder);
+        source.transform.parent = soundEffectHolder.transform;
+        source.transform.position = position;
         int index = GetIndexOfCLipToPlay(sound, sound.soundVariables);
         source.clip = sound.clips[index];
         source.outputAudioMixerGroup = sound.mixerGroup;
@@ -89,13 +95,49 @@ public class ManagerAudio : MonoBehaviour
         source.pitch = Random.Range(sound.soundVariables.pitchRange.x, sound.soundVariables.pitchRange.y);
         source.loop = sound.soundVariables.looping;
         //source.PlayClipAtPoint(source.clip, position);
-        AudioSource.PlayClipAtPoint(source.clip, position);
+        source.Play();
 
         if (!sound.soundVariables.looping)
         {
             //if (EditorApplication.isPlaying)
 
-            Destroy(soundPlayer, source.clip.length);
+            Destroy(source.gameObject, source.clip.length);
+        }
+
+        return source;
+    }
+
+    public AudioSource Play3D(Sound sound, Transform childOf)
+    {
+        if (sound.SpacialHolder == null)
+        {
+            Debug.LogWarning("NO 3D Holder on " + sound.name + "You Goon!");
+            return null;
+        }
+
+        if (sound.soundVariables.playOrder == SoundVariables.PlayOrder.PlayAllAtSameTime)
+        {
+            PlayAll(sound, sound.clips);
+            return null;
+        }
+
+        AudioSource source = Instantiate(sound.SpacialHolder);
+        source.transform.parent = childOf;
+        source.transform.localPosition = Vector3.zero;
+        int index = GetIndexOfCLipToPlay(sound, sound.soundVariables);
+        source.clip = sound.clips[index];
+        source.outputAudioMixerGroup = sound.mixerGroup;
+        source.volume = Random.Range(sound.soundVariables.volumeRange.x, sound.soundVariables.volumeRange.y);
+        source.pitch = Random.Range(sound.soundVariables.pitchRange.x, sound.soundVariables.pitchRange.y);
+        source.loop = sound.soundVariables.looping;
+        //source.PlayClipAtPoint(source.clip, position);
+        source.Play();
+
+        if (!sound.soundVariables.looping)
+        {
+            //if (EditorApplication.isPlaying)
+
+            Destroy(source.gameObject, source.clip.length);
         }
 
         return source;

@@ -53,6 +53,7 @@ public class GroundRider : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         characterTouchedGround += UpdateGroundHeight;
+        AnimatorEvents.playFootstep += PlayFootstep;
     }
 
 
@@ -307,6 +308,18 @@ public class GroundRider : MonoBehaviour
             Debug.DrawLine(startCastPosition, startCastPosition + (Vector3.down * _scaledLength));
             Gizmos.DrawSphere(spherePositionDebug + (Vector3.down * _scaledLength), sphereScaleDebug);
         }
+
+    }
+    [Header("Footstep Sounds")]
+    public Sound foostepsGround;
+    public Sound foostepsOobleck;
+
+    public void PlayFootstep()
+    {
+        if (touchingOobleck)
+            ManagerAudio.instance.Play3D(foostepsOobleck, transform.position);
+        else
+            ManagerAudio.instance.Play3D(foostepsGround, transform.position);
 
     }
 }

@@ -14,6 +14,9 @@ public class Sound : ScriptableObject
 
     [Header("Sound Variables")]
     public SoundVariables soundVariables;
+
+    [Header("3D")]
+    public AudioSource SpacialHolder;
 }
 
 [System.Serializable]
