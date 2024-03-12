@@ -1,5 +1,7 @@
 ﻿using Cinemachine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 public class GS_Intro : GameState
 {
@@ -9,8 +11,11 @@ public class GS_Intro : GameState
 
     private bool inputUsed;
     public PressAnyButton pab;
+
+    public List<GameObject> areasToDisableAfterLettingRenderCameraUpdate;
     public override void OnStart()
     {
+        StartCoroutine(DisableAllAreas());
         input.OverrideAllInput(delayEggInput);
 
         Egg.hatched += Hatched;
@@ -48,6 +53,16 @@ public class GS_Intro : GameState
         stateAnimator.Play("Default");
         pab.FadeOut();
 
+    }
+
+    IEnumerator DisableAllAreas()
+    {
+        yield return new WaitForSeconds(1f / 60f);
+
+        foreach (GameObject area in areasToDisableAfterLettingRenderCameraUpdate)
+        {
+            area.SetActive(false);
+        }
     }
 }
 

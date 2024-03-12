@@ -62,6 +62,9 @@ public class ManagerGame : MonoBehaviour
     }
     public void AdvanceGameState(GameStates newGameState)
     {
+        if (currentGameState == newGameState)
+            return;
+
         gameStates[((int)currentGameState)].OnExit();
 
         if (newGameState == GameStates.Credits)
