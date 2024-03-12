@@ -36,7 +36,7 @@ public class ManagerCharacterState : MonoBehaviour
     [HideInInspector] public CharacterRespawnPosition spawnPosition;
 
     public CharacterVariables CV;
-    private CharacterState startingState;
+    public CharacterState startingState;
     
     public delegate void CharacterAdded(ManagerCharacterState character, int index);
     public static CharacterAdded playerAdded;
@@ -53,7 +53,7 @@ public class ManagerCharacterState : MonoBehaviour
     {
         InitializeAllCharacterStates();
         GetAllReferences();
-        startingState = waitForHatch;
+
         HSM = new HierarchicalStateMachine(startingState);
 
         input.AssignInput(GetComponent<PlayerInput>());
@@ -91,7 +91,7 @@ public class ManagerCharacterState : MonoBehaviour
     }
     private void Start()
     {
-        waitForHatch.OnEnter();
+        startingState.OnEnter();
         stateChanged?.Invoke(gameObject, startingState);      
     }
     private void FixedUpdate()
