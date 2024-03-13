@@ -18,7 +18,7 @@ public class GameState : MonoBehaviour
     public List<Sound> soundsOnStartState = new List<Sound>();
     public List<Sound> durationalAudio = new List<Sound>();
     public float durationalAudioFadeDuration = 1;
-
+    public float durationalAudioVolume = 1f;
     public List<SoundAtSecond> soundAtSeconds = new List<SoundAtSecond>();
 
     private List<AudioSource> durationalAudioSources = new List<AudioSource>();
@@ -39,7 +39,7 @@ public class GameState : MonoBehaviour
         }
 
 
-        LeanTween.value(gameObject, FadeSound, 0f, 1f, durationalAudioFadeDuration);
+        LeanTween.value(gameObject, FadeSound, 0f, durationalAudioVolume, durationalAudioFadeDuration);
 
     }
 
@@ -58,7 +58,7 @@ public class GameState : MonoBehaviour
         EnableList(ExitEnable);
         DisableList(ExitDisable);
 
-        LeanTween.value(gameObject, FadeSound, 1f, 0f, durationalAudioFadeDuration).setOnComplete(() => DestroyAudioSourceGameObjects());     
+        LeanTween.value(gameObject, FadeSound, durationalAudioVolume, 0f, durationalAudioFadeDuration).setOnComplete(() => DestroyAudioSourceGameObjects());     
     }
 
     private void DestroyAudioSourceGameObjects()

@@ -235,12 +235,20 @@ public class CharacterSubState : InterruptableState
 
         foreach (ParticleEffectWithTransform effect in effects.effectsOnStart)
         {
+            ParticleEffect pe = effect.particleEffect;
+
+            if (effects.PURPLE_VARIANT != null)
+            {
+                if (cState.mCState.usePurpleSlimeEffects)
+                    pe = effects.PURPLE_VARIANT;
+            }
+
             List<ParticleSystem> particleSystems = new List<ParticleSystem>();
 
             if(effect.transformOverride == null)
-                ManagerParticleEffects.instance.Play(effect.particleEffect, cState.mCState.transform,out particleSystems);
+                ManagerParticleEffects.instance.Play(pe, cState.mCState.transform,out particleSystems);
             else
-                ManagerParticleEffects.instance.Play(effect.particleEffect, effect.transformOverride, out particleSystems);
+                ManagerParticleEffects.instance.Play(pe, effect.transformOverride, out particleSystems);
 
             allPS.Add(particleSystems);
         }
@@ -252,13 +260,21 @@ public class CharacterSubState : InterruptableState
 
         foreach (ParticleEffectWithTransform dEffect in effects.durationalEffects)
         {
+            ParticleEffect p = dEffect.particleEffect;
+
+            if (effects.PURPLE_VARIANT != null)
+            {
+                if (cState.mCState.usePurpleSlimeEffects)
+                    p = effects.PURPLE_VARIANT;
+            }
+
             List<ParticleSystem> particleSystems = new List<ParticleSystem>();
             GameObject pe;
 
             if (dEffect.transformOverride == null)
-                pe = ManagerParticleEffects.instance.Play(dEffect.particleEffect, cState.mCState.transform, out particleSystems);
+                pe = ManagerParticleEffects.instance.Play(p, cState.mCState.transform, out particleSystems);
             else
-                pe = ManagerParticleEffects.instance.Play(dEffect.particleEffect, dEffect.transformOverride, out particleSystems);
+                pe = ManagerParticleEffects.instance.Play(p, dEffect.transformOverride, out particleSystems);
 
             allPS.Add(particleSystems);
             durationParticleEffects.Add(pe);
@@ -268,6 +284,14 @@ public class CharacterSubState : InterruptableState
 
         foreach (ParticleEffect oob in effects.oobleckDurationEffects)
         {
+            ParticleEffect p = oob;
+
+            if (effects.PURPLE_VARIANT != null)
+            {
+                if (cState.mCState.usePurpleSlimeEffects)
+                    p = effects.PURPLE_VARIANT;
+            }
+
             if (cState.mCState.groundRider.oobleckParticlePosition == null)
             {
                 Debug.LogWarning("OOBLECK PARTICLE POSITION WAS NULL LOWKEY");
@@ -278,7 +302,7 @@ public class CharacterSubState : InterruptableState
             GameObject pe;
 
 
-            pe = ManagerParticleEffects.instance.Play(oob, cState.mCState.groundRider.oobleckParticlePosition, out particleSystems);
+            pe = ManagerParticleEffects.instance.Play(p, cState.mCState.groundRider.oobleckParticlePosition, out particleSystems);
 
             allPS.Add(particleSystems);
             durationParticleEffects.Add(pe);
@@ -658,6 +682,7 @@ public class StateEffects
     public List<ParticleEffectWithTransform> effectsOnExit = new List<ParticleEffectWithTransform>();
     public List<ParticleEffectWithTransform> durationalEffects = new List<ParticleEffectWithTransform>();
     public List<ParticleEffect> oobleckDurationEffects = new List<ParticleEffect>();
+    public ParticleEffect PURPLE_VARIANT;
     [Header("Sounds")]
     public List<Sound> spacialSoundsOnStart = new List<Sound>();
     public List<Sound> soundsOnStart = new List<Sound>();
