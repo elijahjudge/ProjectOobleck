@@ -10,6 +10,7 @@ public class MusicTrigger : MonoBehaviour
     public Sound music;
     public float fadeInDuration;
     public float fadeOutDuration;
+    public float musicVolume;
 
     private AudioSource source;
 
@@ -30,14 +31,14 @@ public class MusicTrigger : MonoBehaviour
             musicPlaying = true;
             source = ManagerAudio.instance.Play(music);
             source.volume = 0f;
-            LeanTween.value(gameObject, fadeVolume, source.volume, 1f, fadeInDuration);
+            LeanTween.value(gameObject, fadeVolume, source.volume, musicVolume, fadeInDuration);
 
         }
 
         if (boundsMusicStop.Contains(player.position) && musicPlaying)
         {
             musicPlaying = false;
-            LeanTween.value(gameObject, fadeVolume, source.volume, 0f, fadeOutDuration).setOnComplete(()=>Destroy(source.gameObject));
+            LeanTween.value(gameObject, fadeVolume, musicVolume, 0f, fadeOutDuration).setOnComplete(()=>Destroy(source.gameObject));
         }
 
     }

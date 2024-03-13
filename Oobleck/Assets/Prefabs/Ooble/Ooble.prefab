@@ -1920,9 +1920,9 @@ MonoBehaviour:
       oobleckDurationEffects: []
       spacialSoundsOnStart: []
       soundsOnStart:
-      - {fileID: 11400000, guid: bdd01d1e7a2ae9346bb6c875e6899333, type: 2}
       - {fileID: 11400000, guid: e4c186b134ba82b49b9d8728975c9e94, type: 2}
       - {fileID: 11400000, guid: d992154989dd8424fa0cd4067e6442b3, type: 2}
+      - {fileID: 11400000, guid: d4fe15279eb53454998670e921251a01, type: 2}
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}

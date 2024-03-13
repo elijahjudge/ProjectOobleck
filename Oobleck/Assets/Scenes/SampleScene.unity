@@ -25933,6 +25933,7 @@ MonoBehaviour:
   music: {fileID: 11400000, guid: 3b2f2af3cfa35d04a98d7cec38319475, type: 2}
   fadeInDuration: 0.5
   fadeOutDuration: 2.5
+  musicVolume: 0.4
   player: {fileID: 1609894926}
 --- !u!20 &1238564013 stripped
 Camera:
@@ -44030,6 +44031,7 @@ MonoBehaviour:
   music: {fileID: 11400000, guid: 8b30a51a96556cd49913b4fe391c55e0, type: 2}
   fadeInDuration: 0.5
   fadeOutDuration: 2.5
+  musicVolume: 0.9
   player: {fileID: 1609894926}
 --- !u!1001 &7311010207912241472
 PrefabInstance:
