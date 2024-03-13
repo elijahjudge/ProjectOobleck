@@ -53,7 +53,7 @@ public class Egg : MonoBehaviour
             shaked?.Invoke();
             shakeCount++;
             // camera shake
-            // sound;
+            ManagerAudio.instance.Play(shakeSound);
             ManagerParticleEffects.instance.Play(shakeEffect, transform); // pe
             animator.Play(shakeAnimations[ranShakeIndex], 0, 0f); // animation
 
@@ -67,6 +67,7 @@ public class Egg : MonoBehaviour
         {
             input.OverrideAllInput(1f);
             hatched?.Invoke();
+            ManagerAudio.instance.Play(hatchSound);
             ManagerParticleEffects.instance.Play(hatchEffect, transform);
 
             Destroy(gameObject);

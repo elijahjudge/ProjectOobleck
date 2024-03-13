@@ -14,7 +14,6 @@ public class PressAnyButton : MonoBehaviour
 
         showing = true;
         LeanTween.value(gameObject, Fade, 0f, 1f, 1f);
-        Debug.Log("fading in");
     }
 
     public void FadeOut()

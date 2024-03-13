@@ -622,6 +622,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -680,6 +681,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -737,6 +739,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -794,6 +797,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds:
@@ -847,6 +851,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -887,6 +892,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -944,6 +950,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart:
       - {fileID: 11400000, guid: fa5d4c7ff1bc60c4b8219f7288fa43ed, type: 2}
       - {fileID: 11400000, guid: 3b46c2d4e91d1e6438aa715547d917d8, type: 2}
@@ -998,6 +1005,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1057,6 +1065,7 @@ MonoBehaviour:
       durationalEffects: []
       oobleckDurationEffects:
       - {fileID: 11400000, guid: 32e83021fcee8ff4b9ec74521a13b752, type: 2}
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1115,6 +1124,7 @@ MonoBehaviour:
       durationalEffects: []
       oobleckDurationEffects:
       - {fileID: 11400000, guid: 45a6d61fa32c80645b6b5638a069243b, type: 2}
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1196,6 +1206,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1236,6 +1247,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1296,6 +1308,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart:
       - {fileID: 11400000, guid: 3af744fa91a44d9458236de52166c64f, type: 2}
       soundsOnExit: []
@@ -1405,6 +1418,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1445,7 +1459,10 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
-      soundsOnStart: []
+      spacialSoundsOnStart: []
+      soundsOnStart:
+      - {fileID: 11400000, guid: e4c186b134ba82b49b9d8728975c9e94, type: 2}
+      - {fileID: 11400000, guid: 4074a4a45a9866148bfd37d15634c1d9, type: 2}
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
@@ -1485,6 +1502,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1524,7 +1542,9 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
-      soundsOnStart: []
+      spacialSoundsOnStart: []
+      soundsOnStart:
+      - {fileID: 11400000, guid: cdf3c350f230f2b4280e81ecdf6adfc4, type: 2}
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
@@ -1576,6 +1596,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1619,9 +1640,12 @@ MonoBehaviour:
           type: 2}
         transformOverride: {fileID: 0}
       oobleckDurationEffects: []
-      soundsOnStart: []
+      spacialSoundsOnStart: []
+      soundsOnStart:
+      - {fileID: 11400000, guid: bd9e8fe11aa708a4e800666c43ebb14f, type: 2}
       soundsOnExit: []
-      durationalSounds: []
+      durationalSounds:
+      - {fileID: 11400000, guid: e8cd2b25fa626314ba583525190b22d1, type: 2}
     cState: {fileID: 0}
   timeReleased: 0
 --- !u!114 &202762270469021159
@@ -1672,6 +1696,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1712,7 +1737,11 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
-      soundsOnStart: []
+      spacialSoundsOnStart: []
+      soundsOnStart:
+      - {fileID: 11400000, guid: e4c186b134ba82b49b9d8728975c9e94, type: 2}
+      - {fileID: 11400000, guid: 962670810f502fe43a67b86cb770e47a, type: 2}
+      - {fileID: 11400000, guid: bdd01d1e7a2ae9346bb6c875e6899333, type: 2}
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
@@ -1752,6 +1781,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1791,6 +1821,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1846,6 +1877,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -1886,7 +1918,11 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
-      soundsOnStart: []
+      spacialSoundsOnStart: []
+      soundsOnStart:
+      - {fileID: 11400000, guid: bdd01d1e7a2ae9346bb6c875e6899333, type: 2}
+      - {fileID: 11400000, guid: e4c186b134ba82b49b9d8728975c9e94, type: 2}
+      - {fileID: 11400000, guid: d992154989dd8424fa0cd4067e6442b3, type: 2}
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
@@ -1929,7 +1965,9 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
-      soundsOnStart: []
+      spacialSoundsOnStart: []
+      soundsOnStart:
+      - {fileID: 11400000, guid: e4c186b134ba82b49b9d8728975c9e94, type: 2}
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
@@ -1985,6 +2023,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -2025,6 +2064,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds:
