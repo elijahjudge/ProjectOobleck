@@ -237,6 +237,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6442883564012567947}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de886d1ea42a0314a82a4d9b0dcb07ce,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1717814010016456026}
   m_SourcePrefab: {fileID: 100100000, guid: de886d1ea42a0314a82a4d9b0dcb07ce, type: 3}
 --- !u!1 &2547085225211653961 stripped
 GameObject:
@@ -375,6 +379,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -460,12 +465,14 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
     eState: {fileID: 0}
     searchForNewSpotRadius: 40
     distanceToStop: 8
+  characterState: {fileID: 0}
   distanceInRange: 40
   touchingOobleck: 0
 --- !u!114 &7886521435735112758
@@ -507,6 +514,8 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart:
+      - {fileID: 11400000, guid: adf77e70be4442b4eb2600e70b8e7aaa, type: 2}
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -591,12 +600,15 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
     eState: {fileID: 0}
     sharkCircleTransform: {fileID: 0}
-    attackWaitRange: {x: 2, y: 10}
+    attackWaitIslandRange: {x: 0, y: 0}
+    attackWaitOobleckRange: {x: 0, y: 0}
+    characterState: {fileID: 0}
   attackStartup:
     duration: 60
     updateNavMeshPosition: 0
@@ -623,6 +635,8 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart:
+      - {fileID: 11400000, guid: c68a9c9eaab931f4dacd69e9284dd8d1, type: 2}
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -653,6 +667,8 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart:
+      - {fileID: 11400000, guid: 67bbf2c368d191e40a18c39116c8490a, type: 2}
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -689,6 +705,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -719,6 +736,8 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart:
+      - {fileID: 11400000, guid: 841f62655923b3e4c9a0077073f8b365, type: 2}
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -769,6 +788,103 @@ MonoBehaviour:
   activeHitBoxes: []
   mEState: {fileID: 3958411116275387297}
   sharkEatBone: {fileID: 440826125195091581}
+--- !u!82 &1717814010016456026
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547085225211653961}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 0231a3553828d1c439c6f50169377229,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 3688eb61e7170e544a5f6d923852f9b2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.02
+      value: 1
+      inSlope: -2.613528
+      outSlope: -2.613528
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.03943532
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.0204082
+      outSlope: -1.0204082
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &2887581593286915571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de886d1ea42a0314a82a4d9b0dcb07ce,

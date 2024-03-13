@@ -525,8 +525,8 @@ MonoBehaviour:
   touchingOobleck: 0
   oobleckParticlePosition: {fileID: 0}
   latestGroundHeight: 0
-  foostepsGround: {fileID: 0}
-  foostepsOobleck: {fileID: 0}
+  foostepsGround: {fileID: 11400000, guid: 7792f772134708f48838e21018cf3e1b, type: 2}
+  foostepsOobleck: {fileID: 11400000, guid: 4e34c10cdc54138409c669e6d8ebee9b, type: 2}
 --- !u!114 &8203873624533383477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,7 +796,8 @@ MonoBehaviour:
       oobleckDurationEffects: []
       soundsOnStart: []
       soundsOnExit: []
-      durationalSounds: []
+      durationalSounds:
+      - {fileID: 11400000, guid: bb105d61b3144794f9c472e88ff2dd04, type: 2}
     cState: {fileID: 0}
 --- !u!114 &-4446910204527134064
 MonoBehaviour:
@@ -943,7 +944,9 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
-      soundsOnStart: []
+      soundsOnStart:
+      - {fileID: 11400000, guid: fa5d4c7ff1bc60c4b8219f7288fa43ed, type: 2}
+      - {fileID: 11400000, guid: 3b46c2d4e91d1e6438aa715547d917d8, type: 2}
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: -4446910204527134064}
@@ -1293,7 +1296,8 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
-      soundsOnStart: []
+      soundsOnStart:
+      - {fileID: 11400000, guid: 3af744fa91a44d9458236de52166c64f, type: 2}
       soundsOnExit: []
       durationalSounds: []
     cState: {fileID: 0}
@@ -2023,7 +2027,8 @@ MonoBehaviour:
       oobleckDurationEffects: []
       soundsOnStart: []
       soundsOnExit: []
-      durationalSounds: []
+      durationalSounds:
+      - {fileID: 11400000, guid: 1e01248eb56c8c840b1966993a057775, type: 2}
     cState: {fileID: 0}
     hatchPosition: {x: -0.56, y: 1, z: -0.27}
     waitTime: 5

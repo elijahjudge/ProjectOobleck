@@ -658,8 +658,8 @@ public class StateEffects
     public List<ParticleEffectWithTransform> effectsOnExit = new List<ParticleEffectWithTransform>();
     public List<ParticleEffectWithTransform> durationalEffects = new List<ParticleEffectWithTransform>();
     public List<ParticleEffect> oobleckDurationEffects = new List<ParticleEffect>();
-
     [Header("Sounds")]
+    public List<Sound> spacialSoundsOnStart = new List<Sound>();
     public List<Sound> soundsOnStart = new List<Sound>();
     public List<Sound> soundsOnExit = new List<Sound>();
     public List<Sound> durationalSounds = new List<Sound>();

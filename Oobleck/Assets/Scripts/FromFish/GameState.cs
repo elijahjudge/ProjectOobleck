@@ -106,7 +106,7 @@ public class GameState : MonoBehaviour
 [System.Serializable]
 public class SoundAtSecond
 {
-    public bool played;
+    [HideInInspector] public bool played;
     public Sound sound;
     public float seconds;
 

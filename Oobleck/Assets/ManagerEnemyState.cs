@@ -177,6 +177,8 @@ public class EnemySubState : State
     private List<List<ParticleSystem>> allPS = new List<List<ParticleSystem>>();
     private List<AudioSource> durationSounds = new List<AudioSource>();
 
+
+
     protected float timeEntered;
     protected float timeInterrupted;
     protected float timeReturned;
@@ -226,6 +228,11 @@ public class EnemySubState : State
         foreach (Sound sound in effects.soundsOnStart)
         {
             ManagerAudio.instance.Play(sound);
+        }
+
+        foreach (Sound sound in effects.spacialSoundsOnStart)
+        {
+            ManagerAudio.instance.Play3D(sound,eState.mEState.transform);
         }
 
         foreach (ParticleEffectWithTransform dEffect in effects.durationalEffects)

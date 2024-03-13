@@ -282,8 +282,10 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
-      soundsOnExit: []
+      soundsOnExit:
+      - {fileID: 11400000, guid: deed840569ef12746b5469ff314688ed, type: 2}
       durationalSounds: []
     eState: {fileID: 0}
   distanceInRange: 30
@@ -327,6 +329,7 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart: []
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -358,6 +361,8 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart:
+      - {fileID: 11400000, guid: 4204c6b233ea4ad48957afb0b207d2f7, type: 2}
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
@@ -368,7 +373,7 @@ MonoBehaviour:
       type: 3}
     spitPosition: {fileID: 6493219349684168976}
     timeSpitTakesToReachPlayer: 0.5
-    playerOffset: {x: 0, y: 2, z: 0}
+    aimOffset: {x: 0, y: 0, z: 0}
   happyYourInOobleck:
     duration: 0
     updateNavMeshPosition: 0
@@ -395,6 +400,8 @@ MonoBehaviour:
       effectsOnExit: []
       durationalEffects: []
       oobleckDurationEffects: []
+      spacialSoundsOnStart:
+      - {fileID: 11400000, guid: 1373723cbf283f84aaca30749b9e0e6e, type: 2}
       soundsOnStart: []
       soundsOnExit: []
       durationalSounds: []
