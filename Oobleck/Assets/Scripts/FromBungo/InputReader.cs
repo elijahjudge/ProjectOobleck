@@ -84,6 +84,9 @@ public class InputReader : MonoBehaviour
     }
 
     public virtual bool GetButtonSouth() => overrideButtonSouth? false : buttonSouth;
+
+    public virtual bool GetPause() =>  pauseButton;
+
     public virtual bool GetButtonNorth() => overrideButtonNorth ? false : buttonNorth;
     public virtual bool GetButtonWest(bool ignoreOverride = false)
     {
@@ -122,12 +125,25 @@ public class InputReader : MonoBehaviour
         myPlayer.actionEvents[2].AddListener(ReadButtonEast);
         myPlayer.actionEvents[3].AddListener(ReadButtonWest);
         myPlayer.actionEvents[4].AddListener(ReadJoystickLeft);
-        myPlayer.actionEvents[5].AddListener(ReadJoystickRight);
-        myPlayer.actionEvents[6].AddListener(ReadTriggerLeft);
-        myPlayer.actionEvents[7].AddListener(ReadTriggerRight);
+        myPlayer.actions.FindAction("Pause").started += pause;
+        myPlayer.actions.FindAction("Pause").canceled += unpause;
+
+        //myPlayer.actionEvents[5].AddListener(ReadJoystickRight);
+        //myPlayer.actionEvents[6].AddListener(ReadTriggerLeft);
+        //myPlayer.actionEvents[7].AddListener(ReadTriggerRight);
+
     }
 
-    
+    public void pause(InputAction.CallbackContext ctx)
+    {
+        pauseButton = true;
+    }
+
+    public void unpause(InputAction.CallbackContext ctx)
+    {
+        pauseButton = false;
+
+    }
     protected void InvokeOnButtonWestReleased()
     {
         OnButtonWestReleased?.Invoke();
@@ -216,6 +232,9 @@ public class InputReader : MonoBehaviour
             buttonSouth = false;
         }
     }
+
+    private bool pauseButton;
+
 
     public void ReadButtonNorth(InputAction.CallbackContext ctx)
     {

@@ -9,6 +9,7 @@ public class GS_FinalCutScene : GameState
     {
         base.OnStart();
 
+        mCState.canPause = false;
         stateDriverCamera.Play("EndCutscene");
         cutsceneAnimator.Play("EndCutSceneDollyIn");
         mCState.input.OverrideAllInput(true);

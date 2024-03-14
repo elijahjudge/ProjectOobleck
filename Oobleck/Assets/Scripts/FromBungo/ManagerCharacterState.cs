@@ -48,6 +48,8 @@ public class ManagerCharacterState : MonoBehaviour
 
     public delegate void HealthEvent();
     public static HealthEvent playerDied;
+
+    public bool canPause;
     // Start is called before the first frame update
     void Awake()
     {
@@ -98,8 +100,14 @@ public class ManagerCharacterState : MonoBehaviour
     {
         HSM.currentState.OnTick();
         CheckDeathFromFalling();
+
+        if (input.GetPause() && canPause)
+        {
+            canvasPauseMenu.SetActive(true);
+        }
     }
 
+    public GameObject canvasPauseMenu;
 
     public void PlayerDie()
     {

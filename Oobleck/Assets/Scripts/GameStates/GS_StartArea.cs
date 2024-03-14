@@ -31,5 +31,6 @@ public class GS_StartArea : GameState
         pow.SetActive(false);
         Time.timeScale = 1f;
 
+        mCState.canPause = true;
     }
 }

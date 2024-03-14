@@ -1,5 +1,5 @@
 {
-    "name": "DefaultControlScheme",
+    "name": "DefaultControlScheme 1",
     "maps": [
         {
             "name": "Player",
@@ -355,7 +355,7 @@
                 {
                     "name": "",
                     "id": "16b8f4ab-5151-4721-9550-a0a15a543993",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
