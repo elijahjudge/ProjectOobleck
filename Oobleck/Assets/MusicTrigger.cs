@@ -15,6 +15,8 @@ public class MusicTrigger : MonoBehaviour
     private AudioSource source;
 
     public Transform player;
+
+
     public delegate void CheckpointEvent(Vector3 position, int checkPoint);
 
     public static CheckpointEvent checkPointTouched;
@@ -32,7 +34,6 @@ public class MusicTrigger : MonoBehaviour
             source = ManagerAudio.instance.Play(music);
             source.volume = 0f;
             LeanTween.value(gameObject, fadeVolume, source.volume, musicVolume, fadeInDuration);
-
         }
 
         if (boundsMusicStop.Contains(player.position) && musicPlaying)
