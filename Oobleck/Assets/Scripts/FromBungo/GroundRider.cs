@@ -35,6 +35,10 @@ public class GroundRider : MonoBehaviour
 
     private Rigidbody rb;
 
+    [Header("sounds")]
+    public Sound landingGround;
+    public Sound landingOobleck;
+
     [Header("Debug")]
     [SerializeField] private bool debugOn;
     public bool checkForGround = true;
@@ -67,15 +71,18 @@ public class GroundRider : MonoBehaviour
             if (!grounded)
             {
                 if (touchingOobleck)
-                    characterTouchedOobleck?.Invoke();
-                else
-                    characterTouchedGround?.Invoke();
-
-
-                if (touchingOobleck)
                 {
-
+                    ManagerAudio.instance.Play(landingOobleck);
+                    characterTouchedOobleck?.Invoke();
                 }
+                else
+                {
+                    ManagerAudio.instance.Play(landingGround);
+                    characterTouchedGround?.Invoke();
+                }
+
+
+                
             }
 
             grounded = true;
